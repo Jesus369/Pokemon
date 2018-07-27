@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/public/styles.css">
+  </head>
+  <body>
+
+    <div class="header">
+      <table>
+      <tr>
+          <td class="pokemon_font">Pokebase</td>
+          <td><img class="pokeball_img" src="/public/pokeball.png"></td>
+      </tr>
+      <table class="login_table">
+        <tr>
+          <th colspan="3">
+            <span class="username_span">{{#username}}{{.}}{{/username}}</span>
+            {{#userId}}<a href="/home/{{.}}">Account</a>{{/userId}}
+          </th>
+        </tr>
+
+        <tr>
+          <td class="login_li"><a class="login_anchor" href="/home/registeruser">Register</a></td>
+          <td class="login_li"><a class="login_anchor" href="/home/userlogin">Login</a></td>
+          <td class="login_li"><a class="login_anchor" href="/home/userlogout">Logout</a></td>
+        </tr>
+      </table>
+
+    </div>
+
+    <table class="navbar">
+      <tr>
+        <td class="nav_elements"><a href="/home">Home</td>
+        <td class="nav_elements"><a href="/home/createpokemon">Add Pokemon</a></td>
+        <td class="nav_elements"><a href="/home/{{#userid}}{{.}}{{/userid}}/showuserpokemon">Trainer Pokemon</a></td>
+        <td class='nav_elements'><a href='/home/{{#userid}}{{.}}{{/userid}}/traineredit'>Edit Trainer Info</a></td>
+      </tr>
+    </table>
+
+
+    <div class= "trainer_page_body">
+      {{#user}}
+      <img class='trainer_image' src='/{{image}}'>
+      <div>
+        Name: {{firstname}}<br>
+        Hometown: {{hometown}}<br>
+        Bio: <br>
+        {{bio}}<br>
+        Age: {{age}}
+      </div>
+    </div>
+
+
+      {{/user}}
+    </div>
+
+  </body>
+</html>

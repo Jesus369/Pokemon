@@ -1,0 +1,60 @@
+.contain_all {
+  font-size: .92em;
+}
+
+/* User Login Page */
+.login {
+  width: 30%;
+}
+
+/* For Pokemon ID Page */
+
+/* End of Pokemon ID Page */
+
+/* Create Pokemon Page */
+
+.form_div {
+  font-size: 1.18em;
+  margin: 0 auto 0 auto;
+  width: 50%;
+}
+
+.edit_input {
+  font-size: 1em;
+  width: 95%;
+}
+
+.desc_input {
+  font-size: 1em;
+  height: 5em;
+}
+
+.submit_pokemon {
+  font-size: 1.2em;
+}
+
+/* Create Pokemon Page */
+
+.form_div {
+  font-size: 1em;
+  margin: 0 auto 0 auto;
+  width: 100%;
+}
+
+.create_pokemon_form {
+  padding: 4em 8em 4em 8em;
+}
+
+.poke_input_label {
+  font-size: 1.3em;
+}
+
+.edit_input {
+  font-size: 1.1em;
+  width: 95%;
+}
+
+.desc_input {
+  font-size: 1.1em;
+  height: 5em;
+}

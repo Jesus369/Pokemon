@@ -1,0 +1,106 @@
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemon_font {
+  font-size: 2.5em;
+}
+
+.login_table {
+  position: relative;
+}
+
+.login_li {
+  font-size: 1.6em;
+}
+
+.navbar {
+  font-size: 1.2em;
+  margin: 1em auto 1em auto;
+}
+
+/* Home Page */
+
+.contain_all {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3em;
+}
+
+.contain_left_center {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+}
+
+.left_side_bar {
+  margin: 1em auto 0 auto;
+  text-align: center;
+  width: 90%;
+}
+
+.pokemon_div_container {
+  margin: 1em auto 0 auto;
+  width: 90%;
+}
+
+.home_pokemon_image {
+  height: 60px;
+  width: 60px;
+}
+
+.right_side_bar {
+  font-size: 1.2em;
+  width: 90%;
+  margin: 1em auto 0 auto;
+}
+
+/* For Pokemon ID Page */
+
+/* User Login */
+.login {
+  margin: 2em auto 0 auto;
+  padding: 3em;
+  width: 70%;
+}
+
+.login_input {
+  font-size: 1em;
+  padding: .7em;
+  width: 80%;
+}
+
+.login_button {
+  font-size: 1.1em;
+  padding: .6em .8em .6em .8em;
+}
+
+/* Create Pokemon Page */
+
+.form_div {
+  font-size: .9em;
+  margin: 0 auto 0 auto;
+  width: 100%;
+}
+
+.create_pokemon_form {
+  padding: 3em;
+}
+
+.poke_img_upload {
+  font-size: 1em;
+}
+
+.edit_input {
+  width: 95%;
+}
+
+.desc_input {
+  height: 5em;
+}
+
+.submit_pokemon {
+  font-size: 1.2em;
+}

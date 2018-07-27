@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/smallDevices.css" media="screen and (min-width:500px)"/>
+    <link rel="stylesheet" type="text/css" href="/public/plusDevices.css" media="screen and (min-width:700px)"/>
+    <link rel="stylesheet" type="text/css" href="/public/tabletDevices.css" media="screen and (min-width:950px)"/>
+    <link rel="stylesheet" type="text/css" href="/public/desktop.css" mediai="screen and (min-width:1080px)"/>
+    <link rel="stylesheet" type="text/css" href="/public/styles.css">
+  </head>
+  <body>
+
+    <div class="header">
+      <ul class="poke_logo">
+          <li>Pokebase</li>
+          <li><img src="/public/pokeball.png"/></li>
+      </ul>
+      <table class="login_table">
+        <tr>
+          <th colspan="3">
+            <span class="username_span">{{#username}}{{.}}{{/username}}</span>
+            {{#userId}}<a href="/home/{{.}}">Account</a>{{/userId}}
+          </th>
+        </tr>
+      </table>
+      <ul class="attr_container">
+        <li><a href="/home/grass">Grass</a></li>
+        <li><a href="/home/bug">Bug</a></li>
+        <li><a href="/home/fire">Fire</a></li>
+        <li><a href="/home/flying">Flying</a></li>
+        <li><a href="/home/normal">Normal</a></li>
+        <li><a href="/home/electric">Electric</a></li>
+      </ul>
+
+      <ul class="login_items">
+          <li><a class="login_anchor" href="/home/registeruser">Register</a></li>
+          <li><a class="login_anchor" href="/home/userlogin">Login</a></li>
+          <li><a class="login_anchor" href="/home/userlogout">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="pokemon_block">
+      <div class="pokemon_listings">
+      {{#pokemon}}
+      <ul class="pokemon_item"">
+        <a href="/home/pokemon/{{id}}">
+        <li>#0{{pokeid}}</li>
+        <li><img class="home_pokemon_image" src="{{image}}"></li>
+        <li>{{name}}</li>
+        </a>
+      </ul>
+      {{/pokemon}}
+      </div>
+    </div>
+
+     <span>To view all pokemon in a JSON format <a href="/jsonpokemon">Click Here</a>!</span>
+
+  </body>
+    <script src="/public/script/script.js"></script>
+</html>

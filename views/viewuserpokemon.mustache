@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/public/styles.css">
+  </head>
+  <body>
+
+    <div class="header">
+      <table>
+      <tr>
+          <td class="pokemon_font">Pokebase</td>
+          <td><img class="pokeball_img" src="/public/pokeball.png"></td>
+      </tr>
+      <table class="login_table">
+        <tr>
+          <th colspan="3">
+            <span class="username_span">{{#username}}{{.}}{{/username}}</span>
+            {{#userId}}<a href="/home/{{.}}">Account</a>{{/userId}}
+          </th>
+        </tr>
+
+        <tr>
+          <td class="login_li"><a class="login_anchor" href="/home/registeruser">Register</a></td>
+          <td class="login_li"><a class="login_anchor" href="/home/userlogin">Login</a></td>
+          <td class="login_li"><a class="login_anchor" href="/home/userlogout">Logout</a></td>
+        </tr>
+      </table>
+
+    </div>
+
+        <table class="navbar">
+          <tr>
+            <td class="nav_elements"><a href="/home">Home</td>
+            <td class="nav_elements"><a href="/home/createpokemon">Add Pokemon</a></td>
+            <td class="nav_elements"><a href="/home/{{#userid}}{{.}}{{/userid}}/showuserpokemon">Trainer Pokemon</a></td>
+
+          </tr>
+        </table>
+<!-- Displaying the user's caught pokemon -->
+
+<div class="contain_all">
+
+  <div class="pokemon_div_container">
+    {{#user}}
+      <li>To view the user's pokemon in a JSON format <a href="/home/{{#userId}}{{.}}{{/userId}}/JSON">Click Here</a>!</li>
+      {{#pokemons}}
+      <li class="list_pokemon">
+        <table>
+            <tr>
+              <td>#0{{pokeid}}</td>
+              <td><img class="home_pokemon_image" src="/{{image}}"></td>
+              <td><a href="/home/pokemon/{{id}}">{{name}}</a></td>
+            </tr>
+        </table>
+      </li>
+      {{/pokemons}}
+      {{/user}}
+  </div>
+
+</div>
+
+
+  </body>
+</html>

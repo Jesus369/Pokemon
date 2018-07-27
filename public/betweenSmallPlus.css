@@ -1,0 +1,32 @@
+.header {
+  display:flex;
+  flex-direction: row;
+}
+
+.login_table {
+  position: absolute;
+  right: 0;
+}
+
+.contain_all {
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.contain_left_center {
+  display: flex;
+  flex-direction: row;
+}
+
+.left_side_bar {
+  width: 45%;
+}
+
+.pokemon_div_container {
+  width: 50%;
+}
+
+.right_side_bar {
+  width: 100%;
+}
