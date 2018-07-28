@@ -183,6 +183,21 @@ linkEleToPoke = (req, res, next) => {
     });
 };
 
+linkWknsToPoke = (req, res, next) => {
+  db
+    .none(
+      "INSERT INTO wknstopokemons (pwfid, wknsid)" +
+        "VALUES (${pwfid}, ${wknsid})",
+      {
+        pwfid: req.body.pwfid,
+        wknsid: req.body.wknsid
+      }
+    )
+    .then(link => {
+      res.json(link);
+    });
+};
+
 getEvolution = (req, res, next) => {
   models.pokemon
     .findAll({
@@ -194,6 +209,11 @@ getEvolution = (req, res, next) => {
         {
           model: models.element,
           attributes: ["id", "eleimg"]
+        },
+        {
+          model: models.element,
+          attributes: ["id", "eleimg"],
+          as: "wknsForPoke"
         },
         {
           model: models.pokemon,
@@ -217,5 +237,6 @@ module.exports = {
   newEvolution,
   getEvolution,
   addElement,
-  linkEleToPoke
+  linkEleToPoke,
+  linkWknsToPoke
 };

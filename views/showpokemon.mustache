@@ -119,34 +119,44 @@
                     </div>
 
                     <div class="attr_listings">
-                        <div style="height: 20px;">
+                        <div style="height: 25px;">
+                            <p>125</p>
+                        </div>
+                        <div style="height: 25px;">
                             <p>100</p>
                         </div>
-                        <div style="height: 20px;">
-                            <p>80</p>
+                        <div style="height: 25px;">
+                            <p>75</p>
                         </div>
-                        <div style="height: 20px;">
-                            <p>60</p>
+                        <div style="height: 25px;">
+                            <p>50</p>
                         </div>
-                        <div style="height: 20px;">
-                            <p>40</p>
+                        <div style="height: 25px;">
+                            <p>25</p>
                         </div>
-                        <div style="height: 20px;">
-                            <p>20</p>
-                        </div>
-                        <div style="height: 20px;">
+                        <div style="height: 25px;">
                             <p>0</p>
                         </div>
                     </div>
                 </div>
-                <div class="elements_block">
-                    <label>Elements</label>
-                    {{#elements}}
-                    <img src="/{{eleimg}}"/>
-                    <p>{{element}}</p>
-                    {{/elements}}
-                </div>
             </div>
+
+             <div class="strngth_wkns">
+                    <div class="elements_block">
+                        <label>Elements</label>
+                        {{#elements}}
+                        <img src="/{{eleimg}}"/>
+                        <p>{{element}}</p>
+                        {{/elements}}
+                    </div>
+                    <div class="wkns_block">
+                        {{#wknsForPoke}}
+                        <label>Weaknesses</label>
+                        <img src="/{{eleimg}}"/>
+                        <p>{{element}}</p>
+                        {{/wknsForPoke}}
+                    </div>
+                </div>
 
 
             <div class="evolutions_block">

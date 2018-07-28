@@ -127,7 +127,7 @@ body {
 
 /* For Pokemon ID Page */
 .major_block_one {
-  background-color: rgba(22, 22, 22, 0.308);
+  background-color: rgba(228, 228, 228, 0.808);
   padding: 0;
   margin: 0;
 }
@@ -259,16 +259,39 @@ body {
   top: 0.8em;
 }
 
-.elements_block {
-  font-family: "Avenir";
-  font-weight: 500;
-  margin-left: 3em;
+.strngth_wkns {
+  background-color: rgb(240, 240, 240);
+  display: flex;
+  flex-direction: row;
   text-align: center;
+  margin: 3em 0;
 }
 
-.elements_block > img {
-  height: 5em;
-  width: 5em;
+.elements_block {
+  background-color: rgba(182, 81, 81, 0.178);
+}
+
+.wkns_block {
+  background-color: rgba(90, 90, 156, 0.24);
+}
+
+.strngth_wkns > div {
+  font-family: "Avenir";
+  font-weight: 500;
+  width: 50%;
+}
+
+.strngth_wkns > div > label {
+  display: block;
+}
+
+.strngth_wkns > div > img {
+  height: 3em;
+  width: 3em;
+}
+
+.strngth_wkns > div > p {
+  margin: 0;
 }
 
 .evolutions_block {
@@ -573,6 +596,64 @@ body {
 
 .ele_poke_form > button:active,
 .ele_poke_form > button:focus {
+  box-shadow: 0 1px 1px 0 rgb(116, 116, 116);
+  outline: none;
+}
+
+/* -------------- */
+
+.wkns_to_poke_block {
+  background-color: white;
+  margin: 2em auto;
+  width: 80%;
+}
+
+.wkns_to_poke_block > label {
+  font-size: 1.4em;
+  font-family: "Avenir Next Condensed";
+  letter-spacing: 1px;
+  display: block;
+  text-align: center;
+}
+
+.wkns_to_pok_form {
+  padding: 10px 0;
+}
+
+.wkns_to_pok_form > div {
+  position: relative;
+  margin: 10px 3em;
+}
+.wkns_to_pok_form > div > p {
+  font-family: "Avenir";
+  padding: 4px;
+  margin: 0;
+}
+.wkns_to_pok_form > div > input {
+  border: 1px solid rgb(163, 163, 163);
+  font-size: .8em;
+  width: 26em;
+  outline: none;
+  padding: 8px;
+}
+
+.wkns_to_pok_form > button {
+  background-color: rgb(40, 177, 102);
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgb(116, 116, 116);
+  color: rgb(221, 221, 221);
+  font-family: "Avenir";
+  font-size: 1em;
+  letter-spacing: 1px;
+  margin-left: -50px;
+  position: relative;
+  bottom: 1em;
+  left: 50%;
+  padding: 6px 1em;
+}
+
+.wkns_to_pok_form > button:active,
+.wkns_to_pok_form > button:focus {
   box-shadow: 0 1px 1px 0 rgb(116, 116, 116);
   outline: none;
 }

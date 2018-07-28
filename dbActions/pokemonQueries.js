@@ -61,6 +61,11 @@ pokemonRoute = async (req, res, next) => {
           attributes: ["id", "element", "eleimg"]
         },
         {
+          model: models.element,
+          attributes: ["eleimg", "element"],
+          as: "wknsForPoke"
+        },
+        {
           model: models.pokemon,
           as: "Evolved",
           attributes: ["id", "name", "image"]

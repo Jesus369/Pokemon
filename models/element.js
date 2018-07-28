@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       through: "eletopokemons",
       foreignKey: "eleid"
     });
+
+    element.belongsToMany(models.pokemon, {
+      through: "wknstopokemons",
+      foreignKey: "wknsid",
+      as: "wknsToPoke"
+    });
   };
   return element;
 };

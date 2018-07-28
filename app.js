@@ -222,6 +222,9 @@ app.post("/home/linkEleToPoke", dbPost.linkEleToPoke);
 // LINK EVOLUTION TO POKEMON
 app.post("/home/newEvolution", dbPost.newEvolution);
 
+// LINK WEAKNESS TO POKEMON
+app.post("/home/linkWknsToPoke", dbPost.linkWknsToPoke);
+
 // EDIT POKEMON
 app.put(
   "/home/pokemon/:id/update?",
