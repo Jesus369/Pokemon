@@ -31,24 +31,11 @@
       </tr>
     </table>
     <ul class="attr_container">
+      {{#elements}}
       <li>
-        <a href="/home/grass">Grass</a>
+        <a href="/home/{{element}}">{{element}}</a>
       </li>
-      <li>
-        <a href="/home/bug">Bug</a>
-      </li>
-      <li>
-        <a href="/home/fire">Fire</a>
-      </li>
-      <li>
-        <a href="/home/flying">Flying</a>
-      </li>
-      <li>
-        <a href="/home/normal">Normal</a>
-      </li>
-      <li>
-        <a href="/home/electric">Electric</a>
-      </li>
+      {{/elements}}
     </ul>
 
     <ul class="login_items">
@@ -64,93 +51,121 @@
     </ul>
   </div>
 
+  <div class="major_block_one">
+    <div class="major_block_two">
 
-  <div class="createpokemon_body">
-    <div class="poke_form_container">
-      <form class="new_poke_form" action="/home/createpokemon" method="POST" enctype="multipart/form-data">
-        <div>
-          <p>Upload a Pokemon!</p>
-          <input type="file" name="pokemonimg" class="poke_img_upload" />
+      {{#pokemon}}
+      <div class="pokemon_data_container">
+        <div class="inner_block_one" id="inner_block_one">
+          <img src="/{{image}}" />
+          <span>{{name}}</span>
         </div>
-        <div>
-          <p>Poke #:</p>
-          <input type="text" placeholder="Pokemon ID" name="pokeid" />
-        </div>
-        <div>
-          <p>Name:</p>
-          <input type="text" placeholder="Name of Pokemon" name="name" />
-        </div>
-        <div>
-          <p>HP:</p>
-          <input type="text" placeholder="HP" name="hp" />
-        </div>
-        <div>
-          <p>Attack:</p>
-          <input type="text" placeholder="Attack" name="attack" />
-        </div>
-        <div>
-          <p>Speed:</p>
-          <input type="text" placeholder="Speed" name="speed" />
-        </div>
-        <div>
-          <p>Defense:</p>
-          <input type="text" placeholder="Defense" name="defense" />
-        </div>
-        <div>
-          <p>Sp Attack:</p>
-          <input type="text" placeholder="SP Attack" name="spattack">
-        </div>
-        <div>
-          <p>Sp Defense:</p>
-          <input type="text" placeholder="SP Defense" name="spdefense" />
-        </div>
-        <div>
-          <p>Total:</p>
-          <input type="text" placeholder="Total" name="total" />
-        </div>
-        <div>
-          <p>Weakness:</p>
-          <input type="text" name="weakness" />
-        </div>
-        <div>
-          <p>Attack 1:</p>
-          <input type="text" name="attackone" />
-        </div>
-        <div>
-          <p>Attack 2:</p>
-          <input type="text" name="attacktwo" />
-        </div>
-        <div>
-          <p>Attack 3:</p>
-          <input type="text" name="attackthree" />
-        </div>
-        <div>
-          <p>Attack 4:</p>
-          <input type="text" name="attackfour" />
-        </div>
-        <div class="poke_desc">
-          <p>Description:</p>
-          <textarea placeholder="Description" name="desc">{{desc}}</textarea>
-        </div>
-        <button class="submit_pokemon">Create</button>
-      </form>
-    </div>
+      </div>
 
-    <div class="evolution_form_block">
-      <label>Create Evolution Relation</label>
-      <form class="evolution_form" method="POST" action="/home/newEvolution">
-        <div>
-          <p>Pokemon</p>
-          <input type="text" placeholder="Pokemon" name="poke" />
+      <div class="attr_w_element">
+        <div class="pokemon_attributes">
+          <div class="attr_chart_block">
+            <table class="attr_chart">
+              <tr id="quadOne">
+                <td class="attr_bar" style="height: {{hp}}px;">
+                  <p>{{hp}}</p>
+                </td>
+                <th scope="row">HP</th>
+              </tr>
+              <tr id="quadTwo">
+                <td class="attr_bar" style="height: {{attack}}px;">
+                  <p>{{attack}}</p>
+                </td>
+                <th scope="row">Attack</th>
+              </tr>
+              <tr id="quadThree">
+                <td class="attr_bar" style="height: {{defense}}px;">
+                  <p>{{defense}}</p>
+                </td>
+                <th scope="row">Defense</th>
+              </tr>
+              <tr id="quadFour">
+                <td class="attr_bar" style="height: {{speed}}px;">
+                  <p>{{speed}}</p>
+                </td>
+                <th scope="row">Speed</th>
+              </tr>
+              <tr id="quadFive">
+                <td class="attr_bar" style="height: {{spattack}}px;">
+                  <p>{{spattack}}</p>
+                </td>
+                <th scope="row">SP Attack</th>
+              </tr>
+              <tr id="quadSix">
+                <td class="attr_bar" style="height: {{spdefense}}px;">
+                  <p>{{spdefense}}</p>
+                </td>
+                <th scope="row">SP Defense</th>
+              </tr>
+            </table>
+          </div>
+
+          <div class="attr_listings">
+            <div style="height: 25px;">
+              <p>125</p>
+            </div>
+            <div style="height: 25px;">
+              <p>100</p>
+            </div>
+            <div style="height: 25px;">
+              <p>75</p>
+            </div>
+            <div style="height: 25px;">
+              <p>50</p>
+            </div>
+            <div style="height: 25px;">
+              <p>25</p>
+            </div>
+            <div style="height: 25px;">
+              <p>0</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <p>Evolution</p>
-          <input type="text" placeholder="Evolution of Pokemon" name="evo" />
+      </div>
+
+      <div class="strngth_wkns">
+        <div class="elements_block">
+          <label>Elements</label>
+          <div>
+            {{#elements}}
+            <div>
+              <img src="/{{eleimg}}" />
+              <p>{{element}}</p>
+            </div {{/elements}} </div>
+          </div>
+          <div class="wkns_block">
+            <label>Weaknesses</label>
+            <div>
+              {{#wknsForPoke}}
+              <div>
+                <img src="/{{eleimg}}" />
+                <p>{{element}}</p>
+              </div>
+              {{/wknsForPoke}}
+            </div>
+          </div>
         </div>
-        <button>Create</button>
-      </form>
+      </div>
+
+
+      <div class="evolutions_block">
+        <div class="inner_evo_block">
+          {{#Evolved}}
+          <div class="evo_item">
+            <img src="/{{image}}" /> {{name}}
+          </div>
+          {{/Evolved}}
+        </div>
+      </div>
+      {{/pokemon}}
     </div>
   </div>
 </body>
+<script type="text/javascript" src="/public/script/pokeid.js"></script>
 
 </html>

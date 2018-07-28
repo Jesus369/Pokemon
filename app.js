@@ -51,6 +51,8 @@ app.get("/", (req, res) => {
 // ROUTE FOR HOME PAGE AND DISPLAY ALL POKEMON
 app.get("/home", dbPokemon.allPokemon);
 
+app.get("/home/:element", dbPokemon.pokemonLinkedElement);
+
 app.get("/jsonpokemon", dbPokemon.allJsonPokemon);
 
 // CREATE POKEMON PAGE

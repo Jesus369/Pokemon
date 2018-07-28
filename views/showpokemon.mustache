@@ -31,24 +31,11 @@
             </tr>
         </table>
         <ul class="attr_container">
+            {{#elements}}
             <li>
-                <a href="/home/grass">Grass</a>
+                <a href="/home/{{element}}">{{element}}</a>
             </li>
-            <li>
-                <a href="/home/bug">Bug</a>
-            </li>
-            <li>
-                <a href="/home/fire">Fire</a>
-            </li>
-            <li>
-                <a href="/home/flying">Flying</a>
-            </li>
-            <li>
-                <a href="/home/normal">Normal</a>
-            </li>
-            <li>
-                <a href="/home/electric">Electric</a>
-            </li>
+            {{/elements}}
         </ul>
 
         <ul class="login_items">
@@ -141,22 +128,30 @@
                 </div>
             </div>
 
-             <div class="strngth_wkns">
-                    <div class="elements_block">
-                        <label>Elements</label>
+            <div class="strngth_wkns">
+                <div class="elements_block">
+                    <label>Elements</label>
+                    <div>
                         {{#elements}}
-                        <img src="/{{eleimg}}"/>
-                        <p>{{element}}</p>
+                        <div>
+                            <img src="/{{eleimg}}"/>
+                            <p>{{element}}</p>
+                        </div>
                         {{/elements}}
                     </div>
-                    <div class="wkns_block">
+                </div>
+                <div class="wkns_block">
+                    <label>Weaknesses</label>
+                    <div>
                         {{#wknsForPoke}}
-                        <label>Weaknesses</label>
-                        <img src="/{{eleimg}}"/>
-                        <p>{{element}}</p>
+                        <div>
+                            <img src="/{{eleimg}}"/>
+                            <p>{{element}}</p>
+                        </div>
                         {{/wknsForPoke}}
                     </div>
                 </div>
+            </div>
 
 
             <div class="evolutions_block">

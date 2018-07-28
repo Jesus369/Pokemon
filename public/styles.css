@@ -6,7 +6,7 @@ body {
 
 /* Header */
 .header {
-  border-bottom: 1px solid rgb(170, 0, 0);
+  border-bottom: 1px solid rgb(56, 56, 56);
   width: 100%;
   height: 8em;
 }
@@ -71,20 +71,24 @@ body {
 /* Attr Listings */
 
 .attr_container {
+  box-shadow: 0 0 8px 1px gray;
   color: white;
   list-style-type: none;
+  margin: 0;
+  width: 13%;
+  text-align: center;
   padding: 0;
-  margin: 0 auto;
-  position: relative;
-  top: 2em;
+  position: absolute;
+  left: 0;
+  top: 5em;
 }
 
 .attr_container > li {
   background-color: rgb(73, 73, 73);
-  box-shadow: 0 0 4px 0 gray;
-  display: inline-block;
+  box-shadow: 0 0 3px 0 rgba(231, 230, 230, 0.473);
+  display: block;
   margin: 0;
-  padding: 5px 3em;
+  padding: 10px 0;
 }
 
 .attr_container > li > a {
@@ -97,9 +101,18 @@ body {
 }
 
 /* Pokemon Listings */
+.home_major {
+  background-color: rgba(226, 73, 81, 0.924);
+  position: relative;
+  width: 100%;
+}
+
 .pokemon_block {
+  background-color: white;
+  border-radius: 5px;
   padding: 2em 0;
-  margin: 2em 0;
+  margin: 0 auto;
+  width: 75%;
 }
 .pokemon_listings {
   border-radius: 5px;
@@ -107,7 +120,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   text-align: center;
 }
 
@@ -127,7 +140,7 @@ body {
 
 /* For Pokemon ID Page */
 .major_block_one {
-  background-color: rgba(228, 228, 228, 0.808);
+  background-color: rgba(226, 73, 81, 0.924);
   padding: 0;
   margin: 0;
 }
@@ -275,22 +288,37 @@ body {
   background-color: rgba(90, 90, 156, 0.24);
 }
 
+.strngth_wkns {
+  display: flex;
+}
 .strngth_wkns > div {
+  display: flex;
+  flex-direction: column;
   font-family: "Avenir";
   font-weight: 500;
   width: 50%;
 }
 
+.strngth_wkns > div > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
 .strngth_wkns > div > label {
-  display: block;
 }
 
-.strngth_wkns > div > img {
-  height: 3em;
-  width: 3em;
+.strngth_wkns > div > div > div {
+  margin-left: 1em;
 }
 
-.strngth_wkns > div > p {
+.strngth_wkns > div > div > div > img {
+  height: 4em;
+  width: 9em;
+}
+
+.strngth_wkns > div > div > div > p {
   margin: 0;
 }
 

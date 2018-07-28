@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/public/styles.css">
   </head>
   <body>
-
+  
     <div class="header">
       <ul class="poke_logo">
           <li>Pokebase</li>
@@ -25,14 +25,6 @@
           </th>
         </tr>
       </table>
-      <ul class="attr_container">
-        <li><a href="/home/grass">Grass</a></li>
-        <li><a href="/home/bug">Bug</a></li>
-        <li><a href="/home/fire">Fire</a></li>
-        <li><a href="/home/flying">Flying</a></li>
-        <li><a href="/home/normal">Normal</a></li>
-        <li><a href="/home/electric">Electric</a></li>
-      </ul>
 
       <ul class="login_items">
           <li><a class="login_anchor" href="/home/registeruser">Register</a></li>
@@ -40,22 +32,32 @@
           <li><a class="login_anchor" href="/home/userlogout">Logout</a></li>
         </ul>
     </div>
+    
 
-    <div class="pokemon_block">
-      <div class="pokemon_listings">
-      {{#pokemon}}
-      <ul class="pokemon_item"">
-        <a href="/home/pokemon/{{id}}">
-        <li>#0{{pokeid}}</li>
-        <li><img class="home_pokemon_image" src="{{image}}"></li>
-        <li>{{name}}</li>
-        </a>
+    <div class="home_major">
+      <ul class="attr_container">
+        {{#element}}
+        <li><a href="/home/{{element}}">{{element}}</a></li>
+        {{/element}}
       </ul>
-      {{/pokemon}}
+      <div class="pokemon_block">
+        <div class="pokemon_listings">
+        {{#element}}
+        {{#pokemons}}
+        <ul class="pokemon_item"">
+          <a href="/home/pokemon/{{id}}">
+          <li>#0{{pokeid}}</li>
+          <li><img class="home_pokemon_image" src="{{image}}"></li>
+          <li>{{name}}</li>
+          </a>
+        </ul>
+        {{/pokemons}}
+        {{/element}}
+        </div>
       </div>
+      <span>To view all pokemon in a JSON format <a href="/jsonpokemon">Click Here</a>!</span>
     </div>
 
-     <span>To view all pokemon in a JSON format <a href="/jsonpokemon">Click Here</a>!</span>
 
   </body>
     <script src="/public/script/script.js"></script>

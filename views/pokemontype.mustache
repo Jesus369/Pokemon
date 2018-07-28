@@ -26,12 +26,9 @@
         </tr>
       </table>
       <ul class="attr_container">
-        <li><a href="/home/grass">Grass</a></li>
-        <li><a href="/home/bug">Bug</a></li>
-        <li><a href="/home/fire">Fire</a></li>
-        <li><a href="/home/flying">Flying</a></li>
-        <li><a href="/home/normal">Normal</a></li>
-        <li><a href="/home/electric">Electric</a></li>
+        {{#element}}
+        <li><a href="/home/{{element}}">{{element}}</a></li>
+        {{/element}}
       </ul>
 
       <ul class="login_items">
@@ -41,38 +38,20 @@
         </ul>
     </div>
 
-    <div class="contain_all">
-      <div class="contain_left_center">
-
-        <div class="left_side_bar">
-            <li class="grass_att"><a href="/home/grass">Grass</a></li>
-            <li class="bug_att"><a href="/home/bug">Bug</a></li>
-            <li class="fire_att"><a href="/home/fire">Fire</a></li>
-            <li class="flying_att"><a href="/home/flying">Flying</a></li>
-            <li class="normal_att"><a href="/home/normal">Normal</a></li>
-            <li class="electric_att"><a href="/home/electric">Electric</a></li>
-        </div>
-
-        <div class="pokemon_div_container">
-            <li>To view all pokemon in a JSON format <a href="/jsonpokemon">Click Here</a>!</li>
-            {{#pokemon}}
-            <li class="list_pokemon">
-              <table>
-                  <tr>
-                    <td>#0{{pokeid}}</td>
-                    <td><img class="home_pokemon_image" src="/{{image}}"></td>
-                    <td><a href="/home/pokemon/{{id}}">{{name}}</a></td>
-                  </tr>
-              </table>
-            </li>
-            {{/pokemon}}
-        </div>
+    <div class="pokemon_block">
+      <div class="pokemon_listings">
+      {{#element}}
+      {{#pokemons}}
+      <ul class="pokemon_item"">
+        <a href="/home/pokemon/{{id}}">
+        <li>#0{{pokeid}}</li>
+        <li><img class="home_pokemon_image" src="/{{image}}"></li>
+        <li>{{name}}</li>
+        </a>
+      </ul>
+      {{/pokemons}}
+      {{/element}}
       </div>
-
-      <div class="right_side_bar">
-        information in here
-      </div>
-
     </div>
 
 
