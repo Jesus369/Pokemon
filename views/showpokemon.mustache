@@ -75,82 +75,90 @@
                 </div>
             </div>
 
-            <div class="pokemon_attributes">
+            <div class="attr_w_element">
+                <div class="pokemon_attributes">
+                    <div class="attr_chart_block">
+                        <table class="attr_chart">
+                            <tr id="quadOne">
+                                <td class="attr_bar" style="height: {{hp}}px;">
+                                    <p>{{hp}}</p>
+                                </td>
+                                <th scope="row">HP</th>
+                            </tr>
+                            <tr id="quadTwo">
+                                <td class="attr_bar" style="height: {{attack}}px;">
+                                    <p>{{attack}}</p>
+                                </td>
+                                <th scope="row">Attack</th>
+                            </tr>
+                            <tr id="quadThree">
+                                <td class="attr_bar" style="height: {{defense}}px;">
+                                    <p>{{defense}}</p>
+                                </td>
+                                <th scope="row">Defense</th>
+                            </tr>
+                            <tr id="quadFour">
+                                <td class="attr_bar" style="height: {{speed}}px;">
+                                    <p>{{speed}}</p>
+                                </td>
+                                <th scope="row">Speed</th>
+                            </tr>
+                            <tr id="quadFive">
+                                <td class="attr_bar" style="height: {{spattack}}px;">
+                                    <p>{{spattack}}</p>
+                                </td>
+                                <th scope="row">SP Attack</th>
+                            </tr>
+                            <tr id="quadSix">
+                                <td class="attr_bar" style="height: {{spdefense}}px;">
+                                    <p>{{spdefense}}</p>
+                                </td>
+                                <th scope="row">SP Defense</th>
+                            </tr>
+                        </table>
+                    </div>
 
-                <div class="attr_chart_block">
-                    <table class="attr_chart">
-                        <tr id="quadOne">
-                            <td class="attr_bar" style="height: {{hp}}px;">
-                                <p>{{hp}}</p>
-                            </td>
-                            <th scope="row">HP</th>
-                        </tr>
-                        <tr id="quadTwo">
-                            <td class="attr_bar" style="height: {{attack}}px;">
-                                <p>{{attack}}</p>
-                            </td>
-                            <th scope="row">Attack</th>
-                        </tr>
-                        <tr id="quadThree">
-                            <td class="attr_bar" style="height: {{defense}}px;">
-                                <p>{{defense}}</p>
-                            </td>
-                            <th scope="row">Defense</th>
-                        </tr>
-                        <tr id="quadFour">
-                            <td class="attr_bar" style="height: {{speed}}px;">
-                                <p>{{speed}}</p>
-                            </td>
-                            <th scope="row">Speed</th>
-                        </tr>
-                        <tr id="quadFive">
-                            <td class="attr_bar" style="height: {{spattack}}px;">
-                                <p>{{spattack}}</p>
-                            </td>
-                            <th scope="row">SP Attack</th>
-                        </tr>
-                        <tr id="quadSix">
-                            <td class="attr_bar" style="height: {{spdefense}}px;">
-                                <p>{{spdefense}}</p>
-                            </td>
-                            <th scope="row">SP Defense</th>
-                        </tr>
-                    </table>
+                    <div class="attr_listings">
+                        <div style="height: 20px;">
+                            <p>100</p>
+                        </div>
+                        <div style="height: 20px;">
+                            <p>80</p>
+                        </div>
+                        <div style="height: 20px;">
+                            <p>60</p>
+                        </div>
+                        <div style="height: 20px;">
+                            <p>40</p>
+                        </div>
+                        <div style="height: 20px;">
+                            <p>20</p>
+                        </div>
+                        <div style="height: 20px;">
+                            <p>0</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="attr_listings">
-                    <div style="height: 20px;">
-                        <p>100</p>
-                    </div>
-                    <div style="height: 20px;">
-                        <p>80</p>
-                    </div>
-                    <div style="height: 20px;">
-                        <p>60</p>
-                    </div>
-                    <div style="height: 20px;">
-                        <p>40</p>
-                    </div>
-                    <div style="height: 20px;">
-                        <p>20</p>
-                    </div>
-                    <div style="height: 20px;">
-                        <p>0</p>
-                    </div>
+                <div class="elements_block">
+                    <label>Elements</label>
+                    {{#elements}}
+                    <img src="/{{eleimg}}"/>
+                    <p>{{element}}</p>
+                    {{/elements}}
                 </div>
             </div>
-            {{/pokemon}}
 
 
             <div class="evolutions_block">
                 <div class="inner_evo_block">
-                    {{#pokemon}} {{#Evolved}}
+                    {{#Evolved}}
                     <div class="evo_item">
                         <img src="/{{image}}" /> {{name}}
                     </div>
-                    {{/Evolved}} {{/pokemon}}
+                    {{/Evolved}}
                 </div>
             </div>
+            {{/pokemon}}
         </div>
     </div>
 </body>

@@ -57,6 +57,10 @@ pokemonRoute = async (req, res, next) => {
       ],
       include: [
         {
+          model: models.element,
+          attributes: ["id", "element", "eleimg"]
+        },
+        {
           model: models.pokemon,
           as: "Evolved",
           attributes: ["id", "name", "image"]
@@ -66,7 +70,8 @@ pokemonRoute = async (req, res, next) => {
     })
     .then(pokemon => {
       res.render("showpokemon", {
-        pokemon: pokemon
+        pokemon: pokemon,
+        elements: pokemon.elements
       });
     });
 };

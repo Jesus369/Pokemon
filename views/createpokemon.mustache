@@ -42,77 +42,122 @@
     </div>
 
 
-
-      <div class="form_div">
-        <form class="create_pokemon_form" action="/home/createpokemon" method="POST" enctype="multipart/form-data">
-          <table>
-            <tr class="poke_form_tr">
-              <th colspan="2" class="upload_font">Upload a Pokemon!</th>
-            </tr>
-            <tr>
-              <td colspan="2"><input type="file" name="pokemonimg" class="poke_img_upload"</td>
-            </tr>
-            <tr>
-              <td><label class="poke_input_label">Poke #:</label><br>
-              <input type="text" class="edit_input" name="pokeid" class="create_input"></td>
-              <td><label class="poke_input_label">Name:</label><br>
-              <input type="text" class="edit_input" name="name" class="create_input"></td>
-            </tr>
-            <tr>
-              <td><label class="poke_input_label">HP:</label><br>
-              <input type="text" class="edit_input" name="hp" class="create_input"></td>
-              <td><label class="poke_input_label">Attack:</label><br>
-              <input type="text" class="edit_input" name="attack" class="create_input"></td>
-            </tr>
-            <tr>
-              <td><label class="poke_input_label">Speed:</label><br>
-              <input type="text" class="edit_input" name="speed" class="create_input"></td>
-              <td><label class="poke_input_label">Defense:</label><br>
-              <input type="text" class="edit_input" name="defense" class="create_input"></td>
-            </tr>
-            <tr>
-              <td><label class="poke_input_label">Sp Attack:</label><br>
-              <input type="text" class="edit_input" name="spattack" class="create_input"></td>
-              <td><label class="poke_input_label">Sp Defense:</label><br>
-              <input type="text" class="edit_input" name="spdefense" class="create_input"></td>
-            </tr>
-            <tr>
-              <td><label class="poke_input_label">Total:</label><br>
-              <input type="text" class="edit_input" name="total" class="create_input"></td>
-              <td><label class="poke_input_label">Weakness:</label><br>
-              <input type="text" class="edit_input" name="weakness" class="create_input"></td>
-            </tr>
-            <tr>
-              <td colspan="2"><label class="poke_input_label">Description:</label><br>
-              <textarea class="desc_input" name="desc">{{desc}}</textarea></td>
-            </tr>
-            <tr>
-              <td><label class="poke_input_label">Attack 1:</label><br>
-              <input type="text" class="edit_input" name="attackone" class="create_input"></td>
-              <td><label class="poke_input_label">Attack 2:</label><br>
-              <input type="text" class="edit_input" name="attacktwo" class="create_input"></td>
-            </tr>
-            <tr>
-              <td><label class="poke_input_label">Attack 3:</label><br>
-              <input type="text" class="edit_input" name="attackthree" class="create_input"></td>
-              <td><label class="poke_input_label">Attack 4:</label><br>
-              <input type="text" class="edit_input" name="attackfour" class="create_input"></td>
-            </tr>
-            <tr>
-            <tr>
-              <th colspan="2"><button class="submit_pokemon">Create</form></th>
-            </tr>
-          </table>
+    <div class="createpokemon_body">
+      <div class="poke_form_container">
+        <form class="new_poke_form" action="/home/createpokemon" method="POST" enctype="multipart/form-data">
+              <label>Create A New Pokemon</label>
+              <div>
+                <p>Image </p>
+                <input type="file" name="pokemonimg" class="poke_img_upload"/>
+              </div>
+              <div>
+                <p>Poke #:</p>
+                <input type="text" placeholder="Pokemon ID" name="pokeid"/>
+              </div>
+              <div>
+                <p>Name:</p>
+                <input type="text" placeholder="Name of Pokemon" name="name"/>
+              </div>
+              <div>
+                <p>HP:</p>
+                <input type="text" placeholder="HP" name="hp"/>
+              </div>
+              <div>
+                <p>Attack:</p>
+                <input type="text" placeholder="Attack" name="attack"/>
+              </div>
+              <div>
+                <p>Speed:</p>
+                <input type="text" placeholder="Speed" name="speed"/>
+              </div>
+              <div>
+                <p>Defense:</p>
+                <input type="text" placeholder="Defense" name="defense"/>
+              </div>
+              <div>
+                <p>Sp Attack:</p>
+                <input type="text" placeholder="SP Attack" name="spattack">
+              </div>
+              <div>
+                <p>Sp Defense:</p>
+                <input type="text" placeholder="SP Defense" name="spdefense"/>
+              </div>
+              <div>
+                <p>Total:</p>
+                <input type="text" placeholder="Total" name="total"/>
+              </div>
+              <div>
+                <p>Weakness:</p>
+                <input type="text" name="weakness"/>
+              </div>
+              <div>
+                <p>Attack 1:</p>
+                <input type="text" name="attackone"/>
+              </div>
+              <div>
+                <p>Attack 2:</p>
+                <input type="text" name="attacktwo"/>
+              </div>
+              <div>
+                <p>Attack 3:</p>
+                <input type="text" name="attackthree"/>
+              </div>
+              <div>
+                <p>Attack 4:</p>
+                <input type="text" name="attackfour"/>
+              </div>
+              <div class="poke_desc">
+                <p>Description:</p>
+                <textarea placeholder="Description" name="desc">{{desc}}</textarea>
+              </div>
+              <button class="submit_pokemon">Create</button>
         </form>
       </div>
 
-      <div>
-        <form method="POST" action="/home/newEvolution">
-          <input type="text" name="poke"/>
-          <input type="text" name="evo"/>
+      <div class="evolution_form_block">
+        <label>Link Pokemon Evolutions</label>
+        <form class="evolution_form" method="POST" action="/home/newEvolution">
+          <div>
+            <p>Pokemon</p>
+            <input type="text" placeholder="Pokemon" name="poke"/>
+          </div>
+          <div>
+            <p>Evolution</p>
+            <input type="text" placeholder="Evolution of Pokemon" name="evo"/>
+          </div>
           <button>Create</button>
         </form>
       </div>
 
+      <div class="attr_form_block">
+        <label>Create Element</label>
+        <form class="attributes_form" method="POST" action="/home/newElement" enctype="multipart/form-data">
+          <div>
+            <p>Image</p>
+            <input type="file" placeholder="Element Image" name="elementImg"/>
+          </div>
+          <div>
+            <p>Element</p>
+            <input type="text" placeholder="Element Name" name="element"/>
+          </div>
+          <button>Create</button>
+        </form>
+      </div>
+
+      <div class="ele_poke_block">
+        <label>Link Pokemons Element(s)</label>
+        <form class="ele_poke_form" method="POST" action="/home/linkEleToPoke">
+          <div>
+            <p>Pokemon ID</p>
+            <input type="text" placeholder="Pokemon ID" name="poke"/>
+          </div>
+          <div>
+            <p>Element ID</p>
+            <input type="text" placeholder="Element ID" name="ele"/>
+          </div>
+          <button>Create</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

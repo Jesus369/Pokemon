@@ -165,9 +165,14 @@ body {
   font-size: 1.3em;
 }
 
+.attr_w_element {
+  display: flex;
+  flex-direction: row;
+}
+
 .pokemon_attributes {
   position: relative;
-  margin-left: 3em;
+  margin-left: 5em;
   width: 850px;
 }
 .attr_chart_block {
@@ -254,6 +259,18 @@ body {
   top: 0.8em;
 }
 
+.elements_block {
+  font-family: "Avenir";
+  font-weight: 500;
+  margin-left: 3em;
+  text-align: center;
+}
+
+.elements_block > img {
+  height: 5em;
+  width: 5em;
+}
+
 .evolutions_block {
   display: flex;
   justify-content: center;
@@ -322,42 +339,242 @@ body {
 }
 
 /* Create Pokemon Page */
-
-.form_div {
-  display: flex;
-  justify-content: center;
-  margin-top: 3em;
+.createpokemon_body {
+  background-color: rgba(177, 177, 177, 0.808);
+  margin: 0;
+  padding: .5em 0;
+}
+.poke_form_container {
+  background-color: white;
+  margin: 2em auto;
+  width: 80%;
+}
+.new_poke_form {
+  padding: 10px 0;
 }
 
-.create_pokemon_form {
-  background-color: #52ab4f;
-  border-radius: 15px;
-  font-size: 1.1em;
-  padding: 1em;
+.new_poke_form > div {
+  position: relative;
+  margin: 10px 3em;
+}
+
+.new_poke_form > label {
+  font-size: 1.4em;
+  font-family: "Avenir Next Condensed";
+  letter-spacing: 1px;
+  display: block;
   text-align: center;
 }
 
-.upload_font {
-  font-family: 'Pokemon Hollow';
+.new_poke_form > div > p {
+  font-family: "Avenir";
+  padding: 4px;
+  margin: 0;
 }
 
-.edit_input {
-  border: 1px solid #2a7d25;
+.new_poke_form > div > input {
+  border: 1px solid rgb(163, 163, 163);
+  font-size: .8em;
+  width: 26em;
+  outline: none;
+  padding: 8px;
+}
+
+.new_poke_form > div > textarea {
+  border: 1px solid rgb(163, 163, 163);
+  font-size: .8em;
+  width: 26em;
+  outline: none;
+  padding: 8px;
+}
+
+.new_poke_form > button {
+  background-color: rgb(40, 177, 102);
   border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgb(116, 116, 116);
+  color: rgb(221, 221, 221);
+  font-family: "Avenir";
   font-size: 1em;
+  letter-spacing: 1px;
+  margin-left: -50px;
+  position: relative;
+  bottom: 1em;
+  left: 50%;
+  padding: 6px 1em;
 }
 
-.desc_input {
-  border: 1px solid #2a7d25;
-  border-radius: 5px;
-  height: 5em;
-  width: 100%;
+.new_poke_form > button:active,
+.new_poke_form > button:focus {
+  box-shadow: 0 1px 1px 0 rgb(116, 116, 116);
+  outline: none;
 }
 
-.submit_pokemon {
-  background-color: #a5c7a4;
-  border: 1px solid #6fadbc;
+.evolution_form_block {
+  background-color: white;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.evolution_form_block > label {
+  font-size: 1.4em;
+  font-family: "Avenir Next Condensed";
+  letter-spacing: 1px;
+  display: block;
+  text-align: center;
+}
+
+.evolution_form {
+  padding: 10px 0;
+}
+
+.evolution_form > div {
+  position: relative;
+  margin: 10px 3em;
+}
+.evolution_form > div > p {
+  font-family: "Avenir";
+  padding: 4px;
+  margin: 0;
+}
+.evolution_form > div > input {
+  border: 1px solid rgb(163, 163, 163);
+  font-size: .8em;
+  width: 26em;
+  outline: none;
+  padding: 8px;
+}
+
+.evolution_form > button {
+  background-color: rgb(40, 177, 102);
   border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgb(116, 116, 116);
+  color: rgb(221, 221, 221);
+  font-family: "Avenir";
+  font-size: 1em;
+  letter-spacing: 1px;
+  margin-left: -50px;
+  position: relative;
+  bottom: 1em;
+  left: 50%;
+  padding: 6px 1em;
+}
+
+.evolution_form > button:active,
+.evolution_form > button:focus {
+  box-shadow: 0 1px 1px 0 rgb(116, 116, 116);
+  outline: none;
+}
+
+.attr_form_block {
+  background-color: white;
+  margin: 2em auto;
+  width: 80%;
+}
+
+.attr_form_block > label {
+  font-size: 1.4em;
+  font-family: "Avenir Next Condensed";
+  letter-spacing: 1px;
+  display: block;
+  text-align: center;
+}
+
+.attributes_form {
+  padding: 10px 0;
+}
+
+.attributes_form > div {
+  position: relative;
+  margin: 10px 3em;
+}
+.attributes_form > div > p {
+  font-family: "Avenir";
+  padding: 4px;
+  margin: 0;
+}
+.attributes_form > div > input {
+  border: 1px solid rgb(163, 163, 163);
+  font-size: .8em;
+  width: 26em;
+  outline: none;
+  padding: 8px;
+}
+
+.attributes_form > button {
+  background-color: rgb(40, 177, 102);
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgb(116, 116, 116);
+  color: rgb(221, 221, 221);
+  font-family: "Avenir";
+  font-size: 1em;
+  letter-spacing: 1px;
+  margin-left: -50px;
+  position: relative;
+  bottom: 1em;
+  left: 50%;
+  padding: 6px 1em;
+}
+
+.attributes_form > button:active,
+.attributes_form > button:focus {
+  box-shadow: 0 1px 1px 0 rgb(116, 116, 116);
+  outline: none;
+}
+
+.ele_poke_block {
+  background-color: white;
+  margin: 2em auto;
+  width: 80%;
+}
+
+.ele_poke_block > label {
+  font-size: 1.4em;
+  font-family: "Avenir Next Condensed";
+  letter-spacing: 1px;
+  display: block;
+  text-align: center;
+}
+
+.ele_poke_form {
+  padding: 10px 0;
+}
+
+.ele_poke_form > div {
+  position: relative;
+  margin: 10px 3em;
+}
+.ele_poke_form > div > p {
+  font-family: "Avenir";
+  padding: 4px;
+  margin: 0;
+}
+.ele_poke_form > div > input {
+  border: 1px solid rgb(163, 163, 163);
+  font-size: .8em;
+  width: 26em;
+  outline: none;
+  padding: 8px;
+}
+
+.ele_poke_form > button {
+  background-color: rgb(40, 177, 102);
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgb(116, 116, 116);
+  color: rgb(221, 221, 221);
+  font-family: "Avenir";
+  font-size: 1em;
+  letter-spacing: 1px;
+  margin-left: -50px;
+  position: relative;
+  bottom: 1em;
+  left: 50%;
+  padding: 6px 1em;
+}
+
+.ele_poke_form > button:active,
+.ele_poke_form > button:focus {
+  box-shadow: 0 1px 1px 0 rgb(116, 116, 116);
+  outline: none;
 }
 
 /*Trainer ID Page*/

@@ -155,40 +155,55 @@ newEvolution = async (req, res, next) => {
   } catch (err) {}
 };
 
-getEvolution = async (req, res, next) => {
+addElement = async (req, res, next) => {
+  db
+    .none(
+      "INSERT into elements(eleimg, element)" + "values(${eleimg}, ${element})",
+      {
+        eleimg: req.file.path,
+        element: req.body.element
+      }
+    )
+    .then(element => {
+      res.json(element);
+    });
+};
+
+linkEleToPoke = (req, res, next) => {
+  db
+    .none(
+      "INSERT INTO eletopokemons (pokeid, eleid)" + "values(${poke}, ${ele})",
+      {
+        poke: req.body.poke,
+        ele: req.body.ele
+      }
+    )
+    .then(elepoke => {
+      res.json(elepoke);
+    });
+};
+
+getEvolution = (req, res, next) => {
   models.pokemon
-    .findOne({
+    .findAll({
       where: {
-        id: 1
+        id: 4
       },
-      attributes: [
-        "id",
-        "name",
-        "image",
-        "desc",
-        "hp",
-        "attackone",
-        "attacktwo",
-        "attackthree",
-        "attackfour",
-        "spattack",
-        "spdefense",
-        "attack",
-        "defense",
-        "speed",
-        "total"
-      ],
+      attributes: ["id", "image"],
       include: [
+        {
+          model: models.element,
+          attributes: ["id", "eleimg"]
+        },
         {
           model: models.pokemon,
           as: "Evolved",
-          attributes: ["id", "name", "image"]
+          attributes: ["id"]
         }
-      ],
-      raw: false
+      ]
     })
-    .then(pokemon => {
-      res.json(pokemon);
+    .then(poke => {
+      res.json(poke);
     });
 };
 
@@ -200,5 +215,7 @@ module.exports = {
   updatePokemon,
   catchPokemon,
   newEvolution,
-  getEvolution
+  getEvolution,
+  addElement,
+  linkEleToPoke
 };

@@ -213,7 +213,13 @@ app.post(
   dbPost.createPokemon
 );
 
-// ADD EVOLUTION
+// CREATE AN ELEMENT
+app.post("/home/newElement", upload.single("elementImg"), dbPost.addElement);
+
+// LINK ELEMENT TO POKEMON
+app.post("/home/linkEleToPoke", dbPost.linkEleToPoke);
+
+// LINK EVOLUTION TO POKEMON
 app.post("/home/newEvolution", dbPost.newEvolution);
 
 // EDIT POKEMON
