@@ -1,13 +1,3 @@
-const pgp = require("pg-promise")(options);
-const promise = require("bluebird");
-const models = require("../models");
-
-var connectString = "postgres://localhost:5432/jayzuss";
-var db = pgp(connectString);
-var options = {
-  promiseLib: promise
-};
-
 allUsers = (req, res, next) => {
   models.users.findAll().then(users => {
     res.send(users);

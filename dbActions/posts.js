@@ -1,14 +1,3 @@
-const pgp = require("pg-promise")(options);
-const promise = require("bluebird");
-const models = require("../models");
-const path = require("path");
-
-var connectString = "postgres://localhost:5432/pokemonapp";
-var db = pgp(connectString);
-var options = {
-  promiseLib: promise
-};
-
 registerUser = (req, res, next) => {
   const user = models.users.build({
     username: req.body.username,
