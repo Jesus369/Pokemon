@@ -299,8 +299,9 @@ body {
 .strngth_wkns > div > div {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
+  width: 90%;
 }
 
 .strngth_wkns > div > label {
@@ -326,7 +327,7 @@ body {
 }
 
 .inner_evo_block {
-  border: 1px solid rgb(255, 127, 127);
+  border: 1px solid rgb(127, 214, 255);
   border-radius: 5px;
   display: inline-block;
   padding: 0 3em;
@@ -339,7 +340,13 @@ body {
   float: left;
   padding: 5em;
 }
-.evo_item > img {
+.evo_item > a {
+  color: black;
+  outline: none;
+  text-decoration: none;
+}
+.evo_item > a > img {
+  display: block;
   height: 8em;
   width: 8em;
 }
