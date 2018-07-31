@@ -165,4 +165,4 @@ app.put(
 );
 
 // LISTEN TO ROUTES
-app.listen(process.env.PORT || 8080);
+app.listen(8080);
