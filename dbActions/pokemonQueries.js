@@ -3,7 +3,6 @@ const promise = require("bluebird");
 const models = require("../models");
 
 var connectString = "postgres://localhost:5432/pokemonapp";
-var db = pgp(connectString);
 var options = {
   promiseLib: promise
 };
