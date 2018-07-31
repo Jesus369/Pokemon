@@ -1,3 +1,5 @@
+const models = require("../models");
+
 registerUser = (req, res, next) => {
   const user = models.users.build({
     username: req.body.username,

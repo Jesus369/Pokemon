@@ -1,11 +1,4 @@
-const pgp = require("pg-promise")(options);
-const promise = require("bluebird");
 const models = require("../models");
-
-var connectString = "postgres://localhost:5432/pokemonapp";
-var options = {
-  promiseLib: promise
-};
 
 allPokemon = async (req, res, next) => {
   const element = await models.element.findAll({

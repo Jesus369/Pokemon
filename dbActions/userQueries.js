@@ -1,3 +1,5 @@
+const models = require("../models");
+
 allUsers = (req, res, next) => {
   models.users.findAll().then(users => {
     res.send(users);

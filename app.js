@@ -23,6 +23,15 @@ app.set("view engine", "mustache");
 app.use(expressValidator());
 app.set("views", "./views");
 
+const pgp = require("pg-promise")(options);
+const promise = require("bluebird");
+
+var connectString = "postgres://localhost:5432/pokemonapp";
+var db = pgp(connectString);
+var options = {
+  promiseLib: promise
+};
+
 app.use(
   session({
     secret: "keyboard cat",
