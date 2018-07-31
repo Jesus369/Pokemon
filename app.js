@@ -1,27 +1,29 @@
-const expressValidator = require("express-validator");
-const mustacheExpress = require("mustache-express");
-const methodOverride = require("method-override");
-const session = require("express-session");
-const bodyParser = require("body-parser");
-const models = require("./models");
-const express = require("express");
-const multer = require("multer");
-const path = require("path");
-const app = express();
-const dbUser = require("./dbActions/userQueries");
-const dbPokemon = require("./dbActions/pokemonQueries");
-const dbPost = require("./dbActions/posts");
+const expressValidator = require("express-validator"),
+  mustacheExpress = require("mustache-express"),
+  methodOverride = require("method-override"),
+  session = require("express-session"),
+  bodyParser = require("body-parser"),
+  models = require("./models"),
+  express = require("express"),
+  multer = require("multer"),
+  path = require("path"),
+  app = express(),
+  dbUser = require("./dbActions/userQueries"),
+  dbPokemon = require("./dbActions/pokemonQueries"),
+  dbPost = require("./dbActions/posts"),
+  Sequelize = require("sequelize");
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/public/script", express.static("uploads/script"));
-app.use("/upload_attributes", express.static("upload_attributes"));
-app.use("/uploads", express.static("uploads"));
-app.use("/public", express.static("public"));
-app.engine("mustache", mustacheExpress());
-app.use(methodOverride("_method"));
-app.set("view engine", "mustache");
-app.use(expressValidator());
-app.set("views", "./views");
+app
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use("/public/script", express.static("uploads/script"))
+  .use("/upload_attributes", express.static("upload_attributes"))
+  .use("/uploads", express.static("uploads"))
+  .use("/public", express.static("public"))
+  .use(methodOverride("_method"))
+  .use(expressValidator())
+  .engine("mustache", mustacheExpress())
+  .set("view engine", "mustache")
+  .set("views", "./views");
 
 const pgp = require("pg-promise")(options);
 const promise = require("bluebird");
@@ -32,13 +34,28 @@ var options = {
   promiseLib: promise
 };
 
+var SessionStore = require("connect-session-sequelize")(session.Store);
+
+var db = new Sequelize(connectString, {
+  host: "localhost",
+  dialect: "postgres",
+  storage: "./session/postgres"
+});
+
+var sessionStore = new SessionStore({
+  db: db
+});
+
 app.use(
   session({
-    secret: "keyboard cat",
+    store: sessionStore,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    secret: "keyboard-cat"
   })
 );
+
+sessionStore.sync();
 
 const storage = multer.diskStorage({
   destination: "./uploads/",
