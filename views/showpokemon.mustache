@@ -5,11 +5,7 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/public/smallDevices.css" media="screen and (min-width:500px)" />
-    <link rel="stylesheet" type="text/css" href="/public/plusDevices.css" media="screen and (min-width:700px)" />
-    <link rel="stylesheet" type="text/css" href="/public/tabletDevices.css" media="screen and (min-width:950px)" />
-    <link rel="stylesheet" type="text/css" href="/public/desktop.css" mediai="screen and (min-width:1080px)" />
-    <link rel="stylesheet" type="text/css" href="/public/styles.css">
+    <link rel="stylesheet" type="text/css" href="/public/ShowPokemon/styles.css">
 </head>
 
 <body>
@@ -30,13 +26,6 @@
                 </th>
             </tr>
         </table>
-        <ul class="attr_container">
-            {{#elements}}
-            <li>
-                <a href="/home/{{element}}">{{element}}</a>
-            </li>
-            {{/elements}}
-        </ul>
 
         <ul class="login_items">
             <li>
@@ -52,13 +41,24 @@
     </div>
 
     <div class="major_block_one">
-        <div class="major_block_two">
+        <div class="side_block">
+            <div class="attr_container">
+                <div id="arrow_up">Up</div>
+                <ul class="attr_listings">
+                    {{#allElements}}
+                    <li><a href="/home/element/{{element}}">{{element}}</a></li>
+                    {{/allElements}}
+                </ul>
+                <div id="arrow_down">Down</div>
+            </div>
+        </div>
 
+        <div class="major_block_two">
             {{#pokemon}}
             <div class="pokemon_data_container">
                 <div class="inner_block_one" id="inner_block_one">
-                    <img src="/{{image}}" />
                     <span>{{name}}</span>
+                    <img src="/{{image}}"/>
                 </div>
             </div>
 
@@ -105,7 +105,7 @@
                         </table>
                     </div>
 
-                    <div class="attr_listings">
+                    <div class="stats_listings">
                         <div style="height: 25px;">
                             <p>125</p>
                         </div>
@@ -135,7 +135,6 @@
                         {{#elements}}
                         <div>
                             <img src="/{{eleimg}}"/>
-                            <p>{{element}}</p>
                         </div>
                         {{/elements}}
                     </div>
@@ -146,7 +145,6 @@
                         {{#wknsForPoke}}
                         <div>
                             <img src="/{{eleimg}}"/>
-                            <p>{{element}}</p>
                         </div>
                         {{/wknsForPoke}}
                     </div>
@@ -167,6 +165,7 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="/public/script/pokeid.js"></script>
+    <script src="/public/script/jquery-3.2.1.min.js"></script>
+    <script src="/public/script/script.js"></script>
 
 </html>

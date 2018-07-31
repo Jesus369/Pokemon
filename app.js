@@ -14,6 +14,7 @@ const dbPost = require("./dbActions/posts");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/public/script", express.static("uploads/script"));
+app.use("/upload_attributes", express.static("upload_attributes"));
 app.use("/uploads", express.static("uploads"));
 app.use("/public", express.static("public"));
 app.engine("mustache", mustacheExpress());
@@ -51,110 +52,12 @@ app.get("/", (req, res) => {
 // ROUTE FOR HOME PAGE AND DISPLAY ALL POKEMON
 app.get("/home", dbPokemon.allPokemon);
 
-app.get("/home/:element", dbPokemon.pokemonLinkedElement);
-
 app.get("/jsonpokemon", dbPokemon.allJsonPokemon);
 
 // CREATE POKEMON PAGE
 app.get("/home/createpokemon", dbPokemon.createPokemon);
 
 app.get("/home/evolution", dbPost.getEvolution);
-
-app.get("/home/grass", (req, res) => {
-  models.pokemon
-    .findAll({
-      where: {
-        type: "Grass"
-      }
-    })
-    .then(pokemon => {
-      res.render("pokemontype", {
-        pokemon: pokemon,
-        username: req.session.username,
-        userId: req.session.userId
-      });
-    });
-});
-
-app.get("/home/bug", (req, res) => {
-  models.pokemon
-    .findAll({
-      where: {
-        type: "Bug"
-      }
-    })
-    .then(pokemon => {
-      res.render("pokemontype", {
-        pokemon: pokemon,
-        username: req.session.username,
-        userId: req.session.userId
-      });
-    });
-});
-
-app.get("/home/flying", (req, res) => {
-  models.pokemon
-    .findAll({
-      where: {
-        type: "Flying"
-      }
-    })
-    .then(pokemon => {
-      res.render("pokemontype", {
-        pokemon: pokemon,
-        username: req.session.username,
-        userId: req.session.userId
-      });
-    });
-});
-
-app.get("/home/fire", (req, res) => {
-  models.pokemon
-    .findAll({
-      where: {
-        type: "Fire"
-      }
-    })
-    .then(pokemon => {
-      res.render("pokemontype", {
-        pokemon: pokemon,
-        username: req.session.username,
-        userId: req.session.userId
-      });
-    });
-});
-
-app.get("/home/normal", (req, res) => {
-  models.pokemon
-    .findAll({
-      where: {
-        type: "Normal"
-      }
-    })
-    .then(pokemon => {
-      res.render("pokemontype", {
-        pokemon: pokemon,
-        username: req.session.username,
-        userId: req.session.userId
-      });
-    });
-});
-
-app.get("/home/electric", (req, res) => {
-  models.pokemon
-    .findAll({
-      where: {
-        type: "Electric"
-      }
-    })
-    .then(pokemon => {
-      res.render("pokemontype", {
-        pokemon: pokemon,
-        username: req.session.username,
-        userId: req.session.userId
-      });
-    });
-});
 
 // ROUTE FOR USERS TO BE DISPLAYED IN A JSON FORMAT
 app.get("/home/users", dbUser.allUsers);
@@ -171,6 +74,7 @@ app.post("/home/registeruser", dbPost.registerUser);
 app.get("/home/userlogin", (req, res) => {
   res.render("userlogin");
 });
+
 // LOGGING IN THE USER
 app.post("/home/userlogin", dbPost.loginUser);
 
@@ -226,6 +130,8 @@ app.post("/home/newEvolution", dbPost.newEvolution);
 
 // LINK WEAKNESS TO POKEMON
 app.post("/home/linkWknsToPoke", dbPost.linkWknsToPoke);
+
+app.get("/home/element/:element", dbPokemon.pokemonLinkedElement);
 
 // EDIT POKEMON
 app.put(

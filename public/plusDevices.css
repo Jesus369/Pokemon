@@ -1,5 +1,5 @@
 .header {
-  display:flex;
+  display: flex;
   flex-direction: row;
 }
 
@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   font-size: 1.3em;
-  width: 90%
+  width: 90%;
 }
 
 .contain_left_center {
@@ -51,7 +51,7 @@
 }
 
 .catch_button {
-  font-size:1.5em;
+  font-size: 1.5em;
 }
 
 .pokemon_json {
@@ -89,7 +89,7 @@
 }
 
 .upload_font {
-    font-size: 2.5em;
+  font-size: 2.5em;
 }
 
 .poke_input_label {

@@ -9,24 +9,21 @@ var options = {
 };
 
 allPokemon = async (req, res, next) => {
-  try {
-    const element = await models.element.findAll({
-      attributes: ["id", "element"],
-      include: [
-        {
-          model: models.pokemon,
-          attributes: ["id", "image", "name", "pokeid"],
-          order: [["pokeid"]]
-        }
-      ]
-    });
+  const element = await models.element.findAll({
+    attributes: ["id", "element"]
+  });
 
-    res.render("home", {
-      element: element,
-      username: req.session.username,
-      userId: req.session.userId
-    });
-  } catch (err) {}
+  const allPokemons = await models.pokemon.findAll({
+    attributes: ["id", "image", "name"],
+    order: [["pokeid"]]
+  });
+
+  res.render("home", {
+    element: element,
+    allPokemons: allPokemons,
+    username: req.session.username,
+    userId: req.session.userId
+  });
 };
 
 allJsonPokemon = (req, res, next) => {
@@ -39,31 +36,26 @@ allJsonPokemon = (req, res, next) => {
     });
 };
 
-pokemonLinkedElement = (req, res, next) => {
-  models.element
-    .findAll({
-      attributes: ["element"],
-      include: [
-        {
-          model: models.pokemon,
-          attributes: ["name", "image", "pokeid", "id"],
-          order: [["pokeid"]],
-          include: [
-            {
-              model: models.element,
-              where: { element: req.params.element }
-            }
-          ]
-        }
-      ]
-    })
-    .then(element => {
-      res.render("pokemontype", {
-        element: element,
-        username: req.session.username,
-        userId: req.session.userId
-      });
-    });
+pokemonLinkedElement = async (req, res, next) => {
+  const allElements = await models.element.findAll({ attributes: ["element"] });
+
+  const pokemons = await models.pokemon.findAll({
+    attributes: ["image", "name", "id", "pokeid"],
+    order: [["pokeid"]],
+    include: [
+      {
+        model: models.element,
+        where: { element: req.params.element }
+      }
+    ]
+  });
+
+  res.render("pokemontype", {
+    pokemons: pokemons,
+    allElements: allElements,
+    username: req.session.username,
+    userId: req.session.userId
+  });
 };
 
 pokemonRoute = async (req, res, next) => {
@@ -92,11 +84,11 @@ pokemonRoute = async (req, res, next) => {
     include: [
       {
         model: models.element,
-        attributes: ["id", "element", "eleimg"]
+        attributes: ["id", "eleimg"]
       },
       {
         model: models.element,
-        attributes: ["eleimg", "element"],
+        attributes: ["eleimg"],
         as: "wknsForPoke"
       },
       {
@@ -109,7 +101,7 @@ pokemonRoute = async (req, res, next) => {
   });
 
   res.render("showpokemon", {
-    elements: allElements,
+    allElements: allElements,
     pokemon: foundPokemon
   });
 };

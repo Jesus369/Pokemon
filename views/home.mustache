@@ -4,11 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/public/smallDevices.css" media="screen and (min-width:500px)"/>
-    <link rel="stylesheet" type="text/css" href="/public/plusDevices.css" media="screen and (min-width:700px)"/>
-    <link rel="stylesheet" type="text/css" href="/public/tabletDevices.css" media="screen and (min-width:950px)"/>
-    <link rel="stylesheet" type="text/css" href="/public/desktop.css" mediai="screen and (min-width:1080px)"/>
-    <link rel="stylesheet" type="text/css" href="/public/styles.css">
+    <link rel="stylesheet" type="text/css" href="/public/Home/styles.css">
   </head>
   <body>
   
@@ -27,38 +23,44 @@
       </table>
 
       <ul class="login_items">
-          <li><a class="login_anchor" href="/home/registeruser">Register</a></li>
-          <li><a class="login_anchor" href="/home/userlogin">Login</a></li>
-          <li><a class="login_anchor" href="/home/userlogout">Logout</a></li>
+          <li><a href="/home/registeruser">Register</a></li>
+          <li><a href="/home/userlogin">Login</a></li>
+          <li><a href="/home/userlogout">Logout</a></li>
         </ul>
     </div>
     
 
     <div class="home_major">
-      <ul class="attr_container">
-        {{#element}}
-        <li><a href="/home/{{element}}">{{element}}</a></li>
-        {{/element}}
-      </ul>
+      <div class="side_block">
+            <div class="attr_container">
+                <div id="arrow_up">Up</div>
+                <ul class="attr_listings">
+                    {{#element}}
+                    <li><a href="/home/element/{{element}}">{{element}}</a></li>
+                    {{/element}}
+                </ul>
+                <div id="arrow_down">Down</div>
+            </div>
+        </div>
+
       <div class="pokemon_block">
         <div class="pokemon_listings">
-        {{#element}}
-        {{#pokemons}}
-        <ul class="pokemon_item"">
-          <a href="/home/pokemon/{{id}}">
-          <li>#0{{pokeid}}</li>
-          <li><img class="home_pokemon_image" src="{{image}}"></li>
-          <li>{{name}}</li>
-          </a>
-        </ul>
-        {{/pokemons}}
-        {{/element}}
+          {{#allPokemons}}
+          <ul class="pokemon_item"">
+            <a href="/home/pokemon/{{id}}">
+            <li><img class="home_pokemon_image" src="{{image}}"></li>
+            <li>{{name}}</li>
+            </a>
+          </ul>
+          {{/allPokemons}}
         </div>
       </div>
-      <span>To view all pokemon in a JSON format <a href="/jsonpokemon">Click Here</a>!</span>
     </div>
+    <span>To view all pokemon in a JSON format <a href="/jsonpokemon">Click Here</a>!</span>
+
 
 
   </body>
+    <script src="/public/script/jquery-3.2.1.min.js"></script>
     <script src="/public/script/script.js"></script>
 </html>
