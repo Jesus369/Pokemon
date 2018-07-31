@@ -198,35 +198,6 @@ linkWknsToPoke = (req, res, next) => {
     });
 };
 
-getEvolution = (req, res, next) => {
-  models.pokemon
-    .findAll({
-      where: {
-        id: 4
-      },
-      attributes: ["id", "image"],
-      include: [
-        {
-          model: models.element,
-          attributes: ["id", "eleimg"]
-        },
-        {
-          model: models.element,
-          attributes: ["id", "eleimg"],
-          as: "wknsForPoke"
-        },
-        {
-          model: models.pokemon,
-          as: "Evolved",
-          attributes: ["id"]
-        }
-      ]
-    })
-    .then(poke => {
-      res.json(poke);
-    });
-};
-
 module.exports = {
   registerUser,
   updateUser,
@@ -235,7 +206,6 @@ module.exports = {
   updatePokemon,
   catchPokemon,
   newEvolution,
-  getEvolution,
   addElement,
   linkEleToPoke,
   linkWknsToPoke

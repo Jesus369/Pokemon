@@ -57,8 +57,6 @@ app.get("/jsonpokemon", dbPokemon.allJsonPokemon);
 // CREATE POKEMON PAGE
 app.get("/home/createpokemon", dbPokemon.createPokemon);
 
-app.get("/home/evolution", dbPost.getEvolution);
-
 // ROUTE FOR USERS TO BE DISPLAYED IN A JSON FORMAT
 app.get("/home/users", dbUser.allUsers);
 
