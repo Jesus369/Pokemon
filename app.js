@@ -1,3 +1,4 @@
+require("dotenv").config();
 const expressValidator = require("express-validator"),
   mustacheExpress = require("mustache-express"),
   methodOverride = require("method-override"),
@@ -165,4 +166,4 @@ app.put(
 );
 
 // LISTEN TO ROUTES
-app.listen(8080);
+app.listen(process.env.HOSTING_NUMBER, () => {});
