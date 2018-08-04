@@ -19,6 +19,6 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "use_env_variable": "HOST_URL"
+    "use_env_variable": "postgres://venqtjbvcwoyip:ea571a1eaca4e9566bc8074d69b1dd5e46566ec5b0d8094121ab6968dd35fa8c@ec2-54-225-103-167.compute-1.amazonaws.com:5432/d73kb3lj9mbk4n"
   }
 }
