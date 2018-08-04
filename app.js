@@ -29,7 +29,7 @@ app
 const pgp = require("pg-promise")(options);
 const promise = require("bluebird");
 
-var connectString = "postgres://localhost:5432/pokemonapp";
+var connectString = process.env.HOST_URL;
 var db = pgp(connectString);
 var options = {
   promiseLib: promise

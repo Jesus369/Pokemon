@@ -2,6 +2,12 @@
   "name": "pokemon_app",
   "version": "1.0.0",
   "main": "app.js",
+  "engines": {
+    "node": "8.9.4"
+  },
+  "production": {
+    "use_env_variable": "HOST_URL"
+  },
   "dependencies": {
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
