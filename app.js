@@ -172,7 +172,7 @@ app
     var result = "App is running";
     res.send(result);
   })
-  .apply.listen(
+  .app.listen(
     app.get("port", () => {
       console.log(
         "App is running, server is listening on port",
