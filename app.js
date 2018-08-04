@@ -70,8 +70,6 @@ app.use(
   })
 );
 
-sessionStore.sync();
-
 const storage = multer.diskStorage({
   destination: "./uploads/",
   filename: (req, file, cb) => {
