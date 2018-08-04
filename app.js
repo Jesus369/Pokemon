@@ -43,19 +43,9 @@ var options = {
   promiseLib: promise
 };
 
-var db = new Sequelize(connectString, {
-  host: "ec2-54-225-103-167.compute-1.amazonaws.com",
-  dialect: "postgres",
-  storage: "./session/postgres"
-});
-
 var sessionStore = new SessionStore({
   db: db
 });
-
-if (process.env.HOST_URL) {
-  pg.defaults.ssl = true;
-}
 
 const pool = new Pool({
   connectionString: connectString
