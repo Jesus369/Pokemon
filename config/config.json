@@ -1,4 +1,11 @@
 {
+  "local": {
+    "username": "root",
+    "password": null,
+    "database": "pokemonapp",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
   "development": {
     "username": "postgres",
     "password": null,
