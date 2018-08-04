@@ -165,5 +165,18 @@ app.put(
   dbPost.updatePokemon
 );
 
-// LISTEN TO ROUTES
-app.listen(process.env.PORT || 5000, () => {});
+app.set("port", process.env.PORT || 5000);
+
+app
+  .get("/", () => {
+    var result = "App is running";
+    res.send(result);
+  })
+  .apply.listen(
+    app.get("port", () => {
+      console.log(
+        "App is running, server is listening on port",
+        app.get("port")
+      );
+    })
+  );
