@@ -168,15 +168,13 @@ app.put(
 app.set("port", process.env.PORT || 5000);
 
 app
-  .get("/", () => {
+  .get("/", function(request, response) {
     var result = "App is running";
-    res.send(result);
+    response.send(result);
   })
-  .app.listen(
-    app.get("port", () => {
-      console.log(
-        "App is running, server is listening on port",
-        app.get("port")
-      );
-    })
-  );
+  .listen(app.get("port"), function() {
+    console.log(
+      "App is running, server is listening on port ",
+      app.get("port")
+    );
+  });
