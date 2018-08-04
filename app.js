@@ -43,10 +43,6 @@ var options = {
   promiseLib: promise
 };
 
-var sessionStore = new SessionStore({
-  db: db
-});
-
 const pool = new Pool({
   connectionString: connectString
 });
@@ -68,7 +64,6 @@ if (config.use_env_variable) {
 
 app.use(
   session({
-    store: sessionStore,
     resave: false,
     saveUninitialized: true,
     secret: "keyboard-cat"
