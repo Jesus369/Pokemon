@@ -166,4 +166,4 @@ app.put(
 );
 
 // LISTEN TO ROUTES
-app.listen(process.env.HOSTING_NUMBER, () => {});
+app.listen(process.env.PORT || 5000, () => {});
