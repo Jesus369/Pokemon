@@ -33,7 +33,9 @@ app
   .set("view engine", "mustache")
   .set("views", "./views");
 
-let connectString = process.env.LOCAL_URL || process.env.HOST_URL;
+let connectString =
+  "postgres://jayzuss:Marco77084@localhost:5432/pokemonapp" ||
+  process.env.HOST_URL;
 
 var db = pgp(connectString);
 var options = {
