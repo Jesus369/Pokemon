@@ -44,6 +44,7 @@
     "type": "git",
     "url": "git+https://github.com/Jesus369/Pokemon_Web_App.git"
   },
+  "keywords": ["node", "heroku", "express"],
   "author": "",
   "license": "ISC",
   "bugs": {
