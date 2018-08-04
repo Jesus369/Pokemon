@@ -14,12 +14,10 @@ const expressValidator = require("express-validator"),
   dbPost = require("./dbActions/posts"),
   Sequelize = require("sequelize"),
   pg = require("pg"),
-  { Pool } = require("pg");
-(pgp = require("pg-promise")(
-  options
-)), (promise = require("bluebird")), (SessionStore = require("connect-session-sequelize")(
-  session.Store
-));
+  { Pool } = require("pg"),
+  pgp = require("pg-promise")(options),
+  promise = require("bluebird"),
+  SessionStore = require("connect-session-sequelize")(session.Store);
 
 app
   .use(bodyParser.urlencoded({ extended: false }))
@@ -33,9 +31,7 @@ app
   .set("view engine", "mustache")
   .set("views", "./views");
 
-let connectString =
-  "postgres://jayzuss:Marco77084@localhost:5432/pokemonapp" ||
-  process.env.HOST_URL;
+let connectString = process.env.LOCAL_URL || process.env.HOST_URL;
 
 var db = pgp(connectString);
 var options = {
