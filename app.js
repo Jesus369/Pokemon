@@ -12,7 +12,14 @@ const expressValidator = require("express-validator"),
   dbUser = require("./dbActions/userQueries"),
   dbPokemon = require("./dbActions/pokemonQueries"),
   dbPost = require("./dbActions/posts"),
-  Sequelize = require("sequelize");
+  Sequelize = require("sequelize"),
+  pg = require("pg"),
+  { Pool } = require("pg");
+(pgp = require("pg-promise")(
+  options
+)), (promise = require("bluebird")), (SessionStore = require("connect-session-sequelize")(
+  session.Store
+));
 
 app
   .use(bodyParser.urlencoded({ extended: false }))
@@ -26,25 +33,30 @@ app
   .set("view engine", "mustache")
   .set("views", "./views");
 
-const pgp = require("pg-promise")(options);
-const promise = require("bluebird");
+let connectString = process.env.LOCAL_URL || process.env.HOST_URL;
 
-var connectString = process.env.HOST_URL;
 var db = pgp(connectString);
 var options = {
+  // bluebird
   promiseLib: promise
 };
 
-var SessionStore = require("connect-session-sequelize")(session.Store);
-
 var db = new Sequelize(connectString, {
-  host: "localhost",
+  host: "ec2-54-225-103-167.compute-1.amazonaws.com",
   dialect: "postgres",
   storage: "./session/postgres"
 });
 
 var sessionStore = new SessionStore({
   db: db
+});
+
+if (process.env.HOST_URL) {
+  pg.defaults.ssl = true;
+}
+
+const pool = new Pool({
+  connectionString: connectString
 });
 
 app.use(
