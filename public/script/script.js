@@ -1,6 +1,3 @@
-let arrowUp = document.getElementById("arrow_up");
-let arrowDown = document.getElementById("down_arrow");
-
 let amount = "";
 
 stopScroll = () => {
@@ -8,7 +5,7 @@ stopScroll = () => {
 };
 
 scroll = () => {
-  $(".attr_listings").animate({ scrollTop: amount }, 50, "linear", () => {
+  $("#attr_listings").animate({ scrollLeft: amount }, 50, () => {
     if (amount != "") {
       scroll();
     }
@@ -34,3 +31,7 @@ $("#arrow_down").hover(
     amount = "";
   }
 );
+
+$(".poke_logo").click(() => {
+  location.href = "/home";
+});

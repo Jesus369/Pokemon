@@ -32,16 +32,18 @@
 
     <div class="home_major">
       <div class="side_block">
-            <div class="attr_container">
-                <div id="arrow_up">Up</div>
-                <ul class="attr_listings">
-                    {{#element}}
-                    <li><a href="/home/element/{{element}}">{{element}}</a></li>
-                    {{/element}}
-                </ul>
-                <div id="arrow_down">Down</div>
-            </div>
+        <div class="attr_container">
+            <div id="arrow_up"><img src="/upload_attributes/left.png"/></div>
+              <div class="attr_listings">
+                  <ul id="attr_listings">
+                      {{#element}}
+                      <li><a href="/home/element/{{element}}">{{element}}</a></li>
+                      {{/element}}
+                  </ul>
+              </div>
+            <div id="arrow_down"><img src="/upload_attributes/right.png"/></div>
         </div>
+      </div>
 
       <div class="pokemon_block">
         <div class="pokemon_listings">

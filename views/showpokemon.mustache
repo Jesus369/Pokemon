@@ -43,13 +43,15 @@
     <div class="major_block_one">
         <div class="side_block">
             <div class="attr_container">
-                <div id="arrow_up">Up</div>
-                <ul class="attr_listings">
-                    {{#allElements}}
-                    <li><a href="/home/element/{{element}}">{{element}}</a></li>
-                    {{/allElements}}
-                </ul>
-                <div id="arrow_down">Down</div>
+                <div id="arrow_up"><img src="/upload_attributes/left.png"/></div>
+                <div class="attr_listings">
+                    <ul id="attr_listings">
+                        {{#allElements}}
+                        <li><a href="/home/element/{{element}}">{{element}}</a></li>
+                        {{/allElements}}
+                    </ul>
+                </div>
+                <div id="arrow_down"><img src="/upload_attributes/right.png"/></div>
             </div>
         </div>
 
@@ -155,8 +157,14 @@
             <div class="evolutions_block">
                 <div class="inner_evo_block">
                     {{#Evolved}}
-                    <div class="evo_item">
-                        <a href="/home/pokemon/{{id}}"><img src="/{{image}}" />{{name}}</a>
+                    <div>
+                        <div class="evo_item">
+                            <a href="/home/pokemon/{{id}}"><img src="/{{image}}" /></a>
+                        </div>
+                        <div class="evo_desc"">
+                            <label>{{name}}</label>
+                            <p>{{desc}}</p>
+                        </div>
                     </div>
                     {{/Evolved}}
                 </div>

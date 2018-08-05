@@ -18,6 +18,10 @@ body {
   padding: 0;
 }
 
+.poke_logo:hover {
+  cursor: pointer;
+}
+
 .login_table {
 }
 
@@ -77,49 +81,69 @@ body {
 /* Elements Listings */
 
 .side_block {
-  background-color: rgb(73, 73, 73);
+  background-color: rgb(255, 255, 255);
   font-family: "Avenir";
-  width: 15%;
 }
+
 .attr_container {
-  color: white;
+  color: rgb(0, 0, 0);
   list-style-type: none;
-  margin: 3em 0 0 0;
   text-align: center;
   padding: 0;
+  width: 70%;
+  margin: auto;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 #arrow_up {
   background-color: rgb(233, 233, 233);
   color: black;
-  width: 100%;
-  padding: .8em 0;
+  padding: .5em 0;
 }
 
 #arrow_down {
   background-color: rgb(233, 233, 233);
   color: black;
-  width: 100%;
-  padding: .8em 0;
+  padding: .5em 0;
 }
 
-.attr_container > ul {
-  height: 11em;
-  overflow: scroll;
+.attr_container > div {
+  display: inline-block;
+}
+
+.attr_listings {
+  width: 40%;
+}
+.attr_container > div > img {
+  height: 2em;
+  width: 2em;
+}
+
+.attr_container > div > ul {
   list-style-type: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  overflow: scroll;
+  direction: rtl;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  flex-direction: row-reverse;
 }
 
-.attr_container > ul > li {
+.attr_container > div > ul > li {
   font-size: 1.1em;
   font-weight: normal;
-  margin: 0;
+  margin: 0 10px;
   padding: .8em 0;
 }
 
-.attr_container > ul > li > a {
-  color: white;
+.attr_container > div > ul > li > a {
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
@@ -129,12 +153,9 @@ body {
 
 /* For Pokemon ID Page */
 .major_block_one {
-  display: flex;
-  flex-direction: row;
   margin: 0;
   padding: 0;
   position: relative;
-  width: 85%;
 }
 .major_block_two {
   border-radius: 5px;
@@ -270,24 +291,23 @@ body {
 }
 
 .strngth_wkns {
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(236, 236, 236);
   display: flex;
   flex-direction: row;
+  justify-content: center;
   text-align: center;
   margin: 3em 0;
 }
 
 .elements_block {
+  justify-content: center;
   background-color: rgba(199, 199, 199, 0.178);
 }
 
 .wkns_block {
-  background-color: rgba(90, 90, 156, 0.24);
+  background-color: rgba(165, 165, 165, 0.24);
 }
 
-.strngth_wkns {
-  display: flex;
-}
 .strngth_wkns > div {
   display: flex;
   flex-direction: column;
@@ -296,15 +316,17 @@ body {
   width: 50%;
 }
 
+.strngth_wkns > div {
+  padding: 1em 0;
+}
+
 .strngth_wkns > div > div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  width: 90%;
-}
-
-.strngth_wkns > div > label {
+  margin: 10px 0;
+  width: 100%;
 }
 
 .strngth_wkns > div > div > div {
@@ -312,8 +334,8 @@ body {
 }
 
 .strngth_wkns > div > div > div > img {
-  height: 4em;
-  width: 9em;
+  height: 3em;
+  width: 7em;
 }
 
 .strngth_wkns > div > div > div > p {
@@ -321,24 +343,22 @@ body {
 }
 
 .evolutions_block {
-  display: flex;
-  justify-content: center;
   margin: 3em 0 0 0;
 }
 
 .inner_evo_block {
-  border: 1px solid rgb(127, 214, 255);
-  border-radius: 5px;
-  display: inline-block;
-  padding: 0 3em;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
 }
 
 .evo_item {
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  padding: 0 5em;
   text-align: center;
-  float: left;
-  padding: 5em;
 }
 .evo_item > a {
   color: black;
@@ -349,5 +369,28 @@ body {
   display: block;
   height: 8em;
   width: 8em;
+}
+
+.evo_desc {
+  border: 1px solid rgb(209, 209, 209);
+  width: 30%;
+  padding: 0 5em;
+}
+
+.inner_evo_block > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.inner_evo_block > div > div > p {
+  font-family: "Avenir";
+  line-height: 1.2em;
+  font-size: 14px;
+}
+
+.inner_evo_block > div > div > label {
+  font-family: "Lucida Grande";
+  font-weight: 100;
+  letter-spacing: 2px;
 }
 /* End of Pokemon ID Page */
