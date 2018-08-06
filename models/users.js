@@ -1,6 +1,6 @@
 "use strict";
 
-const bcrypt = require("bcrypt");
+const impRoot = require("../app.js");
 
 module.exports = (sequelize, DataTypes) => {
   var users = sequelize.define(
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         afterValidate: async user => {
-          const hashedPassword = await bcrypt.hash(user.password, 12);
+          const hashedPassword = await impRoot.bcrypt.hash(user.password, 12);
           user.password = hashedPassword;
         }
       }

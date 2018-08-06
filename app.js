@@ -6,7 +6,6 @@ const methodOverride = require("method-override"),
   bodyParser = require("body-parser"),
   models = require("./models"),
   express = require("express"),
-  bcrypt = require("bcrypt"),
   multer = require("multer"),
   path = require("path"),
   app = express(),
@@ -19,6 +18,8 @@ const methodOverride = require("method-override"),
   pgp = require("pg-promise")(options),
   promise = require("bluebird"),
   SessionStore = require("connect-session-sequelize")(session.Store);
+
+const bcrypt = require("bcrypt");
 
 app
   .use(methodOverride("_method"))
