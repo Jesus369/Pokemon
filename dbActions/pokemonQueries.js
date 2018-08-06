@@ -114,7 +114,7 @@ jsonSinglePokemon = (req, res, next) => {
 };
 
 createPokemon = (req, res, next) => {
-  if (req.session.username != "Jesus222") {
+  if (req.session.username != "Jayzuss") {
     res.send("You are not authorized!");
   } else {
     res.render("createpokemon");
