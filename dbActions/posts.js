@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const models = require("../models");
 
 registerUser = (req, res, next) => {
@@ -36,24 +37,23 @@ updateUser = (req, res, next) => {
     });
 };
 
-loginUser = (req, res, next) => {
-  var user = models.users
-    .findOne({
-      where: {
-        username: req.body.username,
-        password: req.body.password
-      }
-    })
-    .then(user => {
-      if (user.password == req.body.password) {
-        req.session.username = req.body.username;
-        req.session.userId = user.dataValues.id;
-        req.session.authenticated = true;
-        res.redirect("/home");
-      } else {
-        res.send("Login attempt failed");
-      }
-    });
+loginUser = async (req, res, next) => {
+  let user = await models.users.findOne({
+    where: {
+      username: req.body.username
+    }
+  });
+
+  let valid = await bcrypt.compare(req.body.password, user.password);
+
+  if (!valid) {
+    res.send("Login attempt failed");
+  } else {
+    req.session.username = req.body.username;
+    req.session.userId = user.dataValues.id;
+    req.session.authenticated = true;
+    res.redirect("/home");
+  }
 };
 
 createPokemon = (req, res, next) => {

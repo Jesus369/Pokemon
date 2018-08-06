@@ -1,4 +1,5 @@
 "use strict";
+const bcrypt = require("bcrypt");
 module.exports = (sequelize, DataTypes) => {
   var users = sequelize.define(
     "users",
@@ -13,7 +14,14 @@ module.exports = (sequelize, DataTypes) => {
       image: DataTypes.STRING,
       hometown: DataTypes.STRING
     },
-    {}
+    {
+      hooks: {
+        afterValidate: async user => {
+          const hashedPassword = await bcrypt.hash(user.password, 12);
+          user.password = hashedPassword;
+        }
+      }
+    }
   );
 
   users.associate = models => {
