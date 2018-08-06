@@ -1,7 +1,7 @@
 require("dotenv").config();
-const expressValidator = require("express-validator"),
+const methodOverride = require("method-override"),
+  expressValidator = require("express-validator"),
   mustacheExpress = require("mustache-express"),
-  methodOverride = require("method-override"),
   session = require("express-session"),
   bodyParser = require("body-parser"),
   models = require("./models"),
@@ -21,12 +21,12 @@ const expressValidator = require("express-validator"),
   SessionStore = require("connect-session-sequelize")(session.Store);
 
 app
+  .use(methodOverride("_method"))
   .use(bodyParser.urlencoded({ extended: false }))
   .use("/public/script", express.static("uploads/script"))
   .use("/upload_attributes", express.static("upload_attributes"))
   .use("/uploads", express.static("uploads"))
   .use("/public", express.static("public"))
-  .use(methodOverride("_method"))
   .use(expressValidator())
   .engine("mustache", mustacheExpress())
   .set("view engine", "mustache")
