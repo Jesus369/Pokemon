@@ -1,4 +1,4 @@
-const impRoot = require("../app.js");
+const bcrypt = require("bcrypt");
 
 const models = require("../models");
 
@@ -45,7 +45,7 @@ loginUser = async (req, res, next) => {
     }
   });
 
-  let valid = await impRoot.bcrypt.compare(req.body.password, user.password);
+  let valid = await bcrypt.compare(req.body.password, user.password);
 
   if (!valid) {
     res.send("Login attempt failed");
