@@ -22,12 +22,12 @@ const methodOverride = require("method-override"),
 const bcrypt = require("bcrypt");
 
 app
-  .use(methodOverride("_method"))
-  .use(bodyParser.urlencoded({ extended: false }))
   .use("/public/script", express.static("uploads/script"))
   .use("/upload_attributes", express.static("upload_attributes"))
   .use("/uploads", express.static("uploads"))
   .use("/public", express.static("public"))
+  .use(methodOverride("_method"))
+  .use(bodyParser.urlencoded({ extended: false }))
   .use(expressValidator())
   .engine("mustache", mustacheExpress())
   .set("view engine", "mustache")
