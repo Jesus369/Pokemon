@@ -7,53 +7,77 @@ body {
 /* Header */
 .header {
   border-bottom: 1px solid rgb(56, 56, 56);
+  display: flex;
+  flex-direction: row;
   position: relative;
   width: 100%;
 }
 
-.poke_logo {
+.logo_items {
   display: flex;
   flex-direction: row;
+  list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }
 
-.poke_logo:hover {
+.logo_items:hover {
   cursor: pointer;
 }
 
-.poke_logo > li {
-  font-family: 'Pokemon Hollow';
-  font-size: 2.5em;
+#logo_name {
   list-style-type: none;
+  font-style: normal;
+  font-size: 2em;
+  font-weight: 0;
 }
 
-.poke_logo > li > img {
-  height: 1.5em;
-  width: 1.5em;
+.side_one {
+  color: rgb(238, 88, 96);
 }
 
-.login_items {
-  font-family: "Avenir";
-  margin: 0;
-  padding: 0;
+.side_two {
+  color: rgb(158, 158, 158);
+}
+
+.logo_items > li > img {
+  height: 2em;
+  width: 2em;
+}
+
+.active_user {
   position: absolute;
-  right: 3em;
-  top: 5px;
+  right: 5em;
+  top: 1em;
+}
+
+.user_accnts {
+  list-style-type: none;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.user_accnts > li {
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.user_accnts > li > a {
+  color: black;
+  text-decoration: none;
+}
+.login_items {
+  float: right;
+  font-family: "Avenir";
+  list-style-type: none;
+  margin: 2px 0;
+  padding: 0;
 }
 
 .login_items > li {
-  content: "";
   display: inline-block;
-  height: 2px;
-  text-align: center;
-  transition: .9s;
-  width: 80%;
-}
-
-.login_items > li:hover {
-  background-color: red;
-  width: 60%;
+  padding: 2px;
+  transition: .5s;
 }
 
 .login_items > li > a {
@@ -180,6 +204,11 @@ body {
   margin: 0;
   width: 12%;
   border-bottom: 1px solid rgb(179, 179, 179);
+}
+
+.pokemon_item > a {
+  color: black;
+  text-decoration: none;
 }
 
 .home_pokemon_image {

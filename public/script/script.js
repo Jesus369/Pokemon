@@ -1,3 +1,22 @@
+let activeUser = `
+    <li><a class="login_anchor" href="/home/userlogout">Logout</a></li>
+`;
+
+let inactiveUser = `
+  <li><a class="login_anchor" href="/home/registeruser">Register</a></li>
+  <li><a class="login_anchor" href="/home/userlogin">Login</a></li>
+`;
+
+// Accessing username variabe in header
+let username = document.getElementById("username_span");
+
+if (username.innerText === "") {
+  document.getElementById("user_accnts").innerHTML += inactiveUser;
+} else {
+  document.getElementById("user_accnts").innerHTML += activeUser;
+}
+
+// Scrolling element listings selection
 let amount = "";
 
 stopScroll = () => {
@@ -32,6 +51,6 @@ $("#arrow_down").hover(
   }
 );
 
-$(".poke_logo").click(() => {
+$(".logo_items").click(() => {
   location.href = "/home";
 });

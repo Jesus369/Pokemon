@@ -7,18 +7,28 @@
   </head>
   <body>
 
-    <div class="header">
-      <ul class="poke_logo">
-          <li>Pokebase</li>
-          <li><img src="/public/pokeball.png"/></li>
+    <div class="header" id="header">
+      <ul class="logo_items">
+          <li id="logo_name"><span class="side_one">Poke</span><span class="side_two">DBase</span></li>
+          <li id="logo_img"><img src="/public/pokeball.png"/></li>
       </ul>
 
-      <ul class="login_items">
-        <li><a href="/home/registeruser">Register</a></li>
-        <li><a href="/home/userlogin">Login</a></li>
-        <li><a href="/home/userlogout">Logout</a></li>
-      </ul>
+      <div class="active_user">
+        <ul id="user_accnts" class="user_accnts">
+          <li id="username">
+            <span id="username_span">
+              {{#username}}{{.}}{{/username}}
+            </span>
+          </li>
+          <li>
+            {{#userId}}
+              <a href="/home/{{.}}">Account</a>
+            {{/userId}}
+          </li>
+        </ul>
+      </div>
     </div>
+
 
     <div class="register_major">
       <form class="register_form" action='/home/registeruser' method="POST">
@@ -32,4 +42,6 @@
     </div>
 
   </body>
+  <script src="/public/script/jquery-3.2.1.min.js"></script>
+  <script src="/public/script/script.js"></script>
 </html>

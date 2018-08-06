@@ -95,7 +95,9 @@ pokemonRoute = async (req, res, next) => {
 
   res.render("showpokemon", {
     allElements: allElements,
-    pokemon: foundPokemon
+    pokemon: foundPokemon,
+    username: req.session.username,
+    userId: req.session.userId
   });
 };
 
