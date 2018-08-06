@@ -1,14 +1,19 @@
 const models = require("../models");
 
 allPokemon = async (req, res, next) => {
-  const element = await models.element.findAll({
+  const foundElement = await models.element.findAll({
     attributes: ["id", "element"]
   });
 
-  const allPokemons = await models.pokemon.findAll({
+  const foundPokemons = await models.pokemon.findAll({
     attributes: ["id", "image", "name"],
     order: [["pokeid"]]
   });
+
+  const [element, allPokemons] = await Promise.all([
+    foundElement,
+    foundPokemons
+  ]);
 
   res.render("home", {
     element: element,
@@ -17,7 +22,6 @@ allPokemon = async (req, res, next) => {
     userId: req.session.userId
   });
 };
-
 allJsonPokemon = (req, res, next) => {
   models.pokemon
     .findAll({
