@@ -6,6 +6,7 @@ const expressValidator = require("express-validator"),
   bodyParser = require("body-parser"),
   models = require("./models"),
   express = require("express"),
+  bcrypt = require("bcrypt"),
   multer = require("multer"),
   path = require("path"),
   app = express(),
@@ -170,3 +171,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
 });
+
+module.exports.bcrypt = bcrypt;
