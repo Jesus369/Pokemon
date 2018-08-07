@@ -1,10 +1,12 @@
 require("dotenv").config();
 const methodOverride = require("method-override"),
   expressValidator = require("express-validator"),
+  models = require("./models"),
   mustacheExpress = require("mustache-express"),
   session = require("express-session"),
   bodyParser = require("body-parser"),
-  models = require("./models"),
+  pgp = require("pg-promise")(options),
+  promise = require("bluebird"),
   express = require("express"),
   multer = require("multer"),
   path = require("path"),
@@ -15,11 +17,8 @@ const methodOverride = require("method-override"),
   Sequelize = require("sequelize"),
   pg = require("pg"),
   { Pool } = require("pg"),
-  pgp = require("pg-promise")(options),
-  promise = require("bluebird"),
-  SessionStore = require("connect-session-sequelize")(session.Store);
-
-const bcrypt = require("bcrypt");
+  SessionStore = require("connect-session-sequelize")(session.Store),
+  bcrypt = require("bcrypt");
 
 app
   .use("/public/script", express.static("uploads/script"))
@@ -33,13 +32,20 @@ app
   .set("view engine", "mustache")
   .set("views", "./views");
 
-let connectString = process.env.LOCAL_URL || process.env.HOST_URL;
+let connectString;
 
-var db = pgp(connectString);
+if (process.env.LOCAL_URL) {
+  connectString = process.env.LOCAL_URL;
+} else {
+  connectString = process.env.HOST_URL;
+}
+
 var options = {
   // bluebird
   promiseLib: promise
 };
+
+const db = pgp(connectString);
 
 const pool = new Pool({
   connectionString: connectString
@@ -47,7 +53,6 @@ const pool = new Pool({
 
 var env = process.env.NODE_ENV || `development`;
 var config = require(`./config/config.json`)[env];
-var db = {};
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env.HOST_URL);
 }
@@ -121,6 +126,11 @@ app.get("/home/:id", dbUser.userPage);
 //EDIT USER/TRAINER INFO PAGE
 app.get("/home/:id/traineredit", dbUser.updateUser);
 
+// SHOW USER'S POKEMON TEAM
+app.get("/home/:id/trainers-six", (req, res) => {
+  res.render("trainersix");
+});
+
 //view User pokemon
 app.get("/home/:id/showuserpokemon", dbUser.usersPokemon);
 
@@ -138,6 +148,8 @@ app.get("/home/pokemon/:id/update", dbPokemon.updatePokemon);
 
 // INSERTING POKEID AND USERID INTO USERTOPOKEMON TABLE
 app.post("/home/catchpokemon/:id", dbPost.catchPokemon);
+
+app.post("/home/:id/new-teammate", dbPost.addToSix);
 
 // CREATE A POKEMON
 app.post(

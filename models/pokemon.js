@@ -25,9 +25,17 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   pokemon.associate = models => {
+    // All pokemon that the user has captured
     pokemon.belongsToMany(models.users, {
       through: "usertopokemon",
       foreignKey: "pokeid"
+    });
+
+    // 6 Pokemon belonging to user's team
+    pokemon.belongsToMany(models.users, {
+      through: "currentsix",
+      foreignKey: "idpoke",
+      as: "userssix"
     });
 
     // Due to PGSQL, when querying "evo" foreignKey will belong to the active pokemon form
@@ -44,10 +52,13 @@ module.exports = (sequelize, DataTypes) => {
       as: "Evolved"
     });
 
+    // Pokemon's element
     pokemon.belongsToMany(models.element, {
       through: "eletopokemons",
       foreignKey: "pokeid"
     });
+
+    // Pokemon's weakness element
     pokemon.belongsToMany(models.element, {
       through: "wknstopokemons",
       foreignKey: "pwfid",

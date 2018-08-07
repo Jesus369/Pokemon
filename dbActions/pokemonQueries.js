@@ -13,13 +13,12 @@ allPokemon = async (req, res, next) => {
   const [element, allPokemons] = await Promise.all([
     foundElement,
     foundPokemons
-  ]).then(([element, allPokemons]) => {
-    res.render("home", {
-      element: element,
-      allPokemons: allPokemons,
-      username: req.session.username,
-      userId: req.session.userId
-    });
+  ]);
+  res.render("home", {
+    element: element,
+    allPokemons: allPokemons,
+    username: req.session.username,
+    userId: req.session.userId
   });
 };
 allJsonPokemon = (req, res, next) => {

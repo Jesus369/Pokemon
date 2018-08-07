@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/public/TrainerSix/styles.css">
+    </head>
+    <body>
+        <div class="header" id="header">
+            <ul class="logo_items">
+                <li id="logo_name"><span class="side_one">Poke</span><span class="side_two">DBase</span></li>
+                <li id="logo_img"><img src="/public/pokeball.png"/></li>
+            </ul>
+
+            <div class="active_user">
+                <ul id="user_accnts" class="user_accnts">
+                    <li id="username">
+                        <span id="username_span">
+                            {{#username}}{{.}}{{/username}}
+                        </span>
+                    </li>
+                    <li>
+                        {{#userId}}
+                        <a href="/home/{{.}}">Account</a>
+                        {{/userId}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <form method="POST" action="/home/{id}/new-teammate">
+            <input type="text" name="idpoke" placeholder="Pokemon Name"/>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>

@@ -30,22 +30,26 @@
     </div>
 
 
-    <div class= "trainer_page_body">
+    <div class="trainer_page_body">
       {{#user}}
-      <img class='trainer_image' src='/{{image}}'>
+      <img class="trainer_image" src="/{{image}}"/>
       <div>
-        Name: {{firstname}}<br>
-        Hometown: {{hometown}}<br>
-        Bio: <br>
-        {{bio}}<br>
-        Age: {{age}}
+        <ul>
+          <li>Name: {{firstname}}</li>
+          <li>Hometown: {{hometown}}</li>
+          <li>Bio:</li> 
+          <li>{{bio}}</li>
+          <li>Age: {{age}}</li>
+        </ul>
       </div>
+      <a href="/home/{{id}}/trainers-six">View Team</a>
+      <ul>
+      {{#pokemons}}
+        <li><img src="/{{image}}"/></li>
+      {{/pokemons}}
+      </ul>
+      {{/user}}
     </div>
-
-
-      {{/user}}
-    </div>
-
   </body>
   <script src="/public/script/jquery-3.2.1.min.js"></script>
   <script src="/public/script/script.js"></script>

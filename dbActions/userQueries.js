@@ -6,20 +6,30 @@ allUsers = (req, res, next) => {
   });
 };
 
-userPage = (req, res, next) => {
-  models.users
-    .findAll({
-      where: {
-        id: req.params.id
+userPage = async (req, res, next) => {
+  let foundUser = await models.users.findOne({
+    where: {
+      id: req.session.userId
+    },
+    as: "userssix",
+    attributes: ["id", "firstname", "hometown", "age"],
+    include: [
+      {
+        model: models.pokemon,
+        attributes: ["id", "name", "image"]
       }
-    })
-    .then(user => {
-      res.render("showuser", {
-        user: user,
-        username: req.session.username,
-        userid: req.session.userId
-      });
+    ]
+  });
+
+  if (!foundUser) {
+    res.redirect("/home");
+  } else {
+    res.render("showuser", {
+      user: foundUser,
+      username: req.session.username,
+      userid: req.session.userId
     });
+  }
 };
 
 updateUser = (req, res, next) => {
@@ -41,6 +51,20 @@ updateUser = (req, res, next) => {
 userLogout = (req, res, next) => {
   req.session.destroy(err => {});
   res.redirect("/home");
+};
+
+getTeamSix = (req, res, next) => {
+  models.pokemon.findAll({
+    attributes: ["id", "name"],
+    include: [
+      {
+        model: "users",
+        where: {
+          iduser: req.session.userId
+        }
+      }
+    ]
+  });
 };
 
 usersPokemon = (req, res, next) => {

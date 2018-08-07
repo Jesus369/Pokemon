@@ -1,6 +1,19 @@
 const bcrypt = require("bcrypt");
-
 const models = require("../models");
+
+let connectString;
+if (process.env.LOCAL_URL) {
+  connectString = process.env.LOCAL_URL;
+} else {
+  connectString = process.env.HOST_URL;
+}
+const pgp = require("pg-promise")(options);
+const promise = require("bluebird");
+var db = pgp(connectString);
+
+var options = {
+  promiseLib: promise
+};
 
 registerUser = (req, res, next) => {
   const user = models.users.build({
@@ -51,7 +64,7 @@ loginUser = async (req, res, next) => {
     res.send("Login attempt failed");
   } else {
     req.session.username = req.body.username;
-    req.session.userId = user.dataValues.id;
+    req.session.userId = user.id;
     req.session.authenticated = true;
     res.redirect("/home");
   }
@@ -84,39 +97,37 @@ createPokemon = (req, res, next) => {
 };
 
 updatePokemon = (req, res, next) => {
-  (req, res) => {
-    models.pokemon
-      .update(
-        {
-          pokeid: req.body.pokeid,
-          name: req.body.name,
-          desc: req.body.desc,
-          type: req.body.type,
-          hp: req.body.hp,
-          attack: req.body.attack,
-          defense: req.body.defense,
-          spattack: req.body.spattack,
-          spdefense: req.body.spdefense,
-          speed: req.body.speed,
-          total: req.body.total,
-          attackone: req.body.attackone,
-          attacktwo: req.body.attacktwo,
-          attackthree: req.body.attackthree,
-          attackfour: req.body.attackfour,
-          desc: req.body.desc,
-          weakness: req.body.weakness,
-          image: req.file.path
-        },
-        {
-          where: {
-            id: req.params.id
-          }
+  models.pokemon
+    .update(
+      {
+        pokeid: req.body.pokeid,
+        name: req.body.name,
+        desc: req.body.desc,
+        type: req.body.type,
+        hp: req.body.hp,
+        attack: req.body.attack,
+        defense: req.body.defense,
+        spattack: req.body.spattack,
+        spdefense: req.body.spdefense,
+        speed: req.body.speed,
+        total: req.body.total,
+        attackone: req.body.attackone,
+        attacktwo: req.body.attacktwo,
+        attackthree: req.body.attackthree,
+        attackfour: req.body.attackfour,
+        desc: req.body.desc,
+        weakness: req.body.weakness,
+        image: req.file.path
+      },
+      {
+        where: {
+          id: req.params.id
         }
-      )
-      .then(() => {
-        res.redirect("/home");
-      });
-  };
+      }
+    )
+    .then(() => {
+      res.redirect("/home");
+    });
 };
 
 catchPokemon = (req, res, next) => {
@@ -175,6 +186,44 @@ linkEleToPoke = (req, res, next) => {
     });
 };
 
+addToSix = async (req, res, next) => {
+  let usersPokemon = models.pokemon.findAll({
+    attributes: ["name"],
+    include: [
+      {
+        model: models.users,
+        as: "userssix",
+        where: { id: req.session.userId },
+        attributes: ["firstname"]
+      }
+    ]
+  });
+  const [pokemons] = await Promise.all([usersPokemon]);
+  let activeTeam = [];
+  pokemons.map(item => {
+    let items = item.dataValues.name;
+    activeTeam.push(item);
+    return activeTeam;
+  });
+  console.log(activeTeam.length);
+  if (activeTeam.length !== 6) {
+    db
+      .none(
+        "INSERT INTO currentsixes (idpoke, iduser)" +
+          "VALUES (${idpoke}, ${iduser})",
+        {
+          idpoke: req.body.idpoke,
+          iduser: req.session.userId
+        }
+      )
+      .then(newPokemon => {
+        res.json(newPokemon);
+      });
+  } else {
+    res.redirect("/");
+  }
+};
+
 linkWknsToPoke = (req, res, next) => {
   db
     .none(
@@ -197,6 +246,7 @@ module.exports = {
   createPokemon,
   updatePokemon,
   catchPokemon,
+  addToSix,
   newEvolution,
   addElement,
   linkEleToPoke,
