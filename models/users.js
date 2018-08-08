@@ -27,16 +27,15 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   users.associate = models => {
-    // Pokemon captured by the user
+    users.belongsToMany(models.pokemon, {
+      through: "currentsix",
+      foreignKey: "iduser",
+      as: "userssix"
+    });
+
     users.belongsToMany(models.pokemon, {
       through: "usertopokemon",
       foreignKey: "userid"
-    });
-
-    // Pokemon belonging to the user's team
-    users.belongsToMany(models.pokemon, {
-      through: "currentsix",
-      foreignKey: "iduser"
     });
   };
 

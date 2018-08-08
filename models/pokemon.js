@@ -1,4 +1,4 @@
-"use strict";
+("use strict");
 module.exports = (sequelize, DataTypes) => {
   var pokemon = sequelize.define(
     "pokemon",
@@ -25,17 +25,17 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   pokemon.associate = models => {
-    // All pokemon that the user has captured
+    // 6 Pokemon belonging to user's team
+
     pokemon.belongsToMany(models.users, {
       through: "usertopokemon",
-      foreignKey: "pokeid"
+      foreignKey: "pokeid",
+      as: "userspokemon"
     });
 
-    // 6 Pokemon belonging to user's team
     pokemon.belongsToMany(models.users, {
       through: "currentsix",
-      foreignKey: "idpoke",
-      as: "userssix"
+      foreignKey: "idpoke"
     });
 
     // Due to PGSQL, when querying "evo" foreignKey will belong to the active pokemon form

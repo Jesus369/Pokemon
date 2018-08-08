@@ -98,3 +98,102 @@ body {
 }
 
 /* End Header */
+
+.user_info {
+}
+
+.user_info > ul {
+  list-style-type: none;
+}
+
+.user_info > ul > li > label {
+  font-family: "Avenir";
+  font-size: 1.3em;
+}
+
+/* User's Six */
+.poke_team_block {
+  background-color: rgba(137, 165, 255, 0.986);
+  text-align: center;
+  padding: 4em 0;
+}
+
+.poke_team_block > div > p {
+  font-family: "Avenir";
+  font-size: 1.3em;
+}
+
+.poke_team_block > ul {
+  display: inline-block;
+  margin-left: 2em;
+  list-style-type: none;
+  padding: 1.5em;
+  position: relative;
+  text-align: center;
+}
+
+.cover_pokemon {
+  position: absolute;
+  top: 0;
+  left: -1em;
+  transition: 1s;
+}
+.pokeball_cover {
+  height: 8em;
+  width: 8em;
+  transition: .5s;
+}
+
+.six_img {
+  height: 4em;
+  width: 4em;
+  transition: 1s;
+}
+
+.six_name {
+  font-family: "Gill Sans";
+  position: absolute;
+  bottom: -3em;
+}
+
+.six_name:hover ~ .cover_pokemon {
+  height: 2em;
+  width: 2em;
+}
+/* Caught Pokemon Section */
+.pokemon_block {
+  background-color: white;
+  border-radius: 5px;
+  padding: 2em 0;
+  margin: 0 auto;
+  width: 70%;
+}
+.pokemon_listings {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.pokemon_item {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 1em 0;
+  margin: 0;
+  width: 12%;
+  border-bottom: 1px solid rgb(179, 179, 179);
+}
+
+.pokemon_item > a {
+  color: black;
+  text-decoration: none;
+}
+
+.home_pokemon_image {
+  width: 50px;
+  height: 50px;
+}

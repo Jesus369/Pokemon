@@ -27,5 +27,8 @@
     "host": "ec2-54-225-103-167.compute-1.amazonaws.com",
     "use_env_variable": "HOST_URL",
     "dialect": "postgres"
+  },
+  "define": {
+    "createdAt": "createdat"
   }
 }

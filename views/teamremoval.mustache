@@ -3,7 +3,7 @@
     <head>
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="/public/TrainerSix/styles.css">
+        <link rel="stylesheet" type="text/css" href="/public/TeamRemoval/styles.css">
     </head>
     <body>
         <div class="header" id="header">
@@ -27,11 +27,5 @@
                 </ul>
             </div>
         </div>
-
-        <form method="POST" action="/home/{id}/new-teammate">
-            <input type="text" name="idpoke" placeholder="Pokemon Name"/>
-            <button>Submit</button>
-            {{#error}}{{.}}{{/error}}
-        </form>
     </body>
 </html>

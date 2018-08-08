@@ -130,17 +130,24 @@ updatePokemon = (req, res, next) => {
     });
 };
 
-catchPokemon = (req, res, next) => {
+catchPokemon = async (req, res, next) => {
   if (!req.session.username) {
     res.send("You aren't logged in");
   } else {
-    models.usertopokemon
-      .create({
-        userid: req.session.userId,
-        pokeid: req.params.id
-      })
+    var now = new Date();
+    await db
+      .none(
+        'INSERT INTO usertopokemons (pokeid, userid, "createdAt", "updatedAt")' +
+          "VALUES (${pokeid}, ${userid}, ${created_at}, ${updated_at})",
+        {
+          pokeid: req.params.id,
+          userid: req.session.userId,
+          created_at: now,
+          updated_at: now
+        }
+      )
       .then(() => {
-        res.redirect("/home/:id/showuserpokemon");
+        res.redirect("/home/" + req.params.id + "/showuserpokemon");
       });
   }
 };
@@ -189,10 +196,10 @@ linkEleToPoke = (req, res, next) => {
 addToSix = async (req, res, next) => {
   let usersPokemon = models.pokemon.findAll({
     attributes: ["name"],
+    as: "userssix",
     include: [
       {
         model: models.users,
-        as: "userssix",
         where: { id: req.session.userId },
         attributes: ["firstname"]
       }
@@ -220,7 +227,7 @@ addToSix = async (req, res, next) => {
         res.json(newPokemon);
       });
   } else {
-    res.redirect("/");
+    res.redirect("/home/" + req.session.userId + "/remove-from-team");
   }
 };
 

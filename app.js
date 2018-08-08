@@ -131,6 +131,8 @@ app.get("/home/:id/trainers-six", (req, res) => {
   res.render("trainersix");
 });
 
+app.get("/home/:id/remove-from-team", dbUser.reampTeam);
+
 //view User pokemon
 app.get("/home/:id/showuserpokemon", dbUser.usersPokemon);
 
@@ -147,7 +149,7 @@ app.get("/home/pokemon/:id/json", dbPokemon.jsonSinglePokemon);
 app.get("/home/pokemon/:id/update", dbPokemon.updatePokemon);
 
 // INSERTING POKEID AND USERID INTO USERTOPOKEMON TABLE
-app.post("/home/catchpokemon/:id", dbPost.catchPokemon);
+app.post("/home/pokemon-captured/:id", dbPost.catchPokemon);
 
 app.post("/home/:id/new-teammate", dbPost.addToSix);
 

@@ -33,24 +33,45 @@
     <div class="trainer_page_body">
       {{#user}}
       <img class="trainer_image" src="/{{image}}"/>
-      <div>
+      <div class="user_info">
         <ul>
-          <li>Name: {{firstname}}</li>
+          <li><label>{{username}}</label></li>
           <li>Hometown: {{hometown}}</li>
           <li>Bio:</li> 
           <li>{{bio}}</li>
           <li>Age: {{age}}</li>
         </ul>
       </div>
+      <a href="/home/{{id}}/showuserpokemon">View All Pokemon</a>
       <a href="/home/{{id}}/trainers-six">View Team</a>
-      <ul>
-      {{#pokemons}}
-        <li><img src="/{{image}}"/></li>
-      {{/pokemons}}
-      </ul>
+      <div class="poke_team_block">
+        <div>
+          <p>Pokemon on Hand</p>
+        </div>
+        {{#userssix}}
+        <ul class="poke_team_listings">
+          <li class="cover_pokemon"><img class="pokeball_cover" src="/upload_attributes/pokeball.png"/></li>
+          <li><img class="six_img" src="/{{image}}"/></li>
+          <li class="six_name">{{name}}</li>
+        </ul>
+        {{/userssix}}
+      </div>
+      <div class="pokemon_block">
+        <div class="pokemon_listings">
+          {{#pokemons}}
+          <ul class="pokemon_item"">
+              <a href="/home/pokemon/{{id}}">
+              <li><img class="home_pokemon_image" src="/{{image}}"></li>
+              <li>{{name}}</li>
+              </a>
+            </ul>
+          {{/pokemons}}
+        </div>
+      </div>
       {{/user}}
     </div>
   </body>
   <script src="/public/script/jquery-3.2.1.min.js"></script>
+  <script src="/public/ShowUser/javascript/pageFunc.js"></script>
   <script src="/public/script/script.js"></script>
 </html>
